@@ -1,0 +1,911 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Concessionario RideReady API",
+    "version": "1.0.0",
+    "description": "API per la gestione del concessionario"
+  },
+  "paths": {
+    "/veicoli/clienti/acquisto": {
+      "get": {
+        "summary": "Visualizza veicoli disponibili per l'acquisto",
+        "tags": [
+          "Ricerca e Visualizzazione Veicoli [Cliente]"
+        ],
+        "description": "RF-GC-RVV-1\nIl sistema dovrà permettere al cliente di visualizzare veicoli disponibili per acquisto",
+        "responses": {
+          "200": {
+            "description": "Elenco dei veicoli disponibili all'acquisto",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automobile"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Errore nella visualizzazione dei veicoli"
+          },
+            "401": {
+            "description": "Non autorizzato a visualizzare i veicoli"
+            }
+        }
+      }
+    },
+    "/veicoli/clienti/noleggio": {
+      "get": {
+        "summary": "Visualizza veicoli disponibili per il noleggio",
+        "tags": [
+          "Ricerca e Visualizzazione Veicoli [Cliente]"
+        ],
+        "description": "RF-GC-RVV-2\nIl sistema dovrà permettere al cliente di visualizzare veicoli disponibili per il noleggio",
+        "responses": {
+          "200": {
+            "description": "Elenco dei veicoli disponibili per il noleggio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automobile"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione dei veicoli"
+            },
+            "401": {
+              "description": "Non autorizzato a visualizzare i veicoli"
+            }
+        }
+      }
+    },
+    "/veicoli/{id}": {
+      "get": {
+        "summary": "Visualizza dettagli veicolo",
+        "tags": [
+          "Ricerca e Visualizzazione Veicoli [Clienti/Amministratore-Acquisto/Amministratore-Noleggio]"
+        ],
+        "description": "RF-GC-RVV-3\nIl sistema dovrà permettere al cliente di visualizzare dettagli completi dei veicoli",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dettagli del veicolo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automobile"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Errore nella visualizzazione dei dettagli del veicolo"
+          },
+          "401": {
+            "description": "Non autorizzato a visualizzare i dettagli del veicolo"
+          }
+        }
+      }
+    },
+    "/prenotazioni/clienti/acquisto/inserimento": {
+      "post": {
+        "summary": "Inserimento prenotazione veicolo acquisto",
+        "tags": [
+          "Gestione Prenotazione Acquisto ed Acquisto [Clienti]"
+        ],
+        "description": "RF-GC-PA-1\nIl sistema dovrà permettere al cliente di effettuare prenotazioni di veicoli per l'acquisto\n\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prenotazione"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Prenotazione avvenuta con successo"
+          },
+          "400": {
+            "description": "Errore nella prenotazione del veicolo"
+          },
+          "401": {
+            "description": "Non autorizzato a prenotare il veicolo"
+          }
+        }
+      }
+    },
+    "/prenotazioni/clienti/acquisto": {
+      "get": {
+        "summary": "Visualizza prenotazioni acquisto effettuate dall'utente",
+        "tags": [
+          "Gestione Prenotazione Acquisto ed Acquisto [Clienti]"
+        ],
+        "description": "RF-GC-PA-2\nIl sistema dovrà permettere al cliente di visualizzare le prenotazioni per l’acquisto\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prenotazioni effettuate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Errore nella visualizzazione delle prenotazioni"
+          },
+          "401": {
+            "description": "Non autoriazzato a visualizzare le prenotazioni"
+          }
+        }
+      }
+    },
+    "/acquisti/clienti": {
+      "get": {
+        "summary": "Visualizza acquisti effettuati dal cliente",
+        "tags": [
+          "Gestione Prenotazione Acquisto ed Acquisto [Clienti]"
+        ],
+        "description": "RF-GC-PA-3\nIl sistema dovrà permettere al cliente di visualizzare i veicoli acquistati\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Visualizzazione acquisti effettuati",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ordine"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione degli acquisti"
+            },
+            "401": {
+                "description": "Non autorizzato a visualizzare gli acquisti"
+            }
+        }
+      }
+    },
+    "/prenotazioni/clienti/noleggio/inserimento": {
+      "post": {
+        "summary": "Inserimento prenotazione veicolo per il noleggio",
+        "tags": [
+          "Gestione Prenotazione Noleggi e Noleggi [Cliente]"
+        ],
+        "description": "RF-GC-GN-1\nIl sistema dovrà permettere al cliente di prenotare veicoli per il noleggio (ordine accettato dall’amministratore noleggio)\n\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prenotazione"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Prenotazione avvenuta con successo"
+          },
+            "400": {
+                "description": "Errore nella prenotazione del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato a prenotare il veicolo"
+            }
+        }
+      }
+    },
+    "/prenotazioni/clienti/noleggio": {
+      "get": {
+        "summary": "Visualizza prenotazioni effettuate dall'utente",
+        "tags": [
+          "Gestione Prenotazione Noleggi e Noleggi [Cliente]"
+        ],
+        "description": "RF-GC-GN-3\nIl sistema dovrà permettere al cliente di visualizzare i propri contratti di noleggio\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prenotazioni noleggio effettuate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione delle prenotazioni"
+            },
+            "401": {
+                "description": "Non autorizzato a visualizzare le prenotazioni"
+            }
+        }
+      }
+    },
+    "/noleggio/clienti": {
+      "get": {
+        "summary": "Visualizza noleggi effettuati dal cliente",
+        "tags": [
+          "Gestione Prenotazione Noleggi e Noleggi [Cliente]"
+        ],
+        "description": "RF-GC-GN-5\nIl sistema dovrà permettere al cliente di visualizzare i propri noleggi terminati\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Visualizzazione noleggi effettuati",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ordine"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione dei noleggi"
+            },
+            "401": {
+                "description": "Non autorizzato a visualizzare i noleggi"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori/inserimento": {
+      "post": {
+        "summary": "Inserimento Veicolo Amministratore",
+        "tags": [
+          "Gestione Inventario [Amministratori]"
+        ],
+        "description": "Il sistema dovrà permettere all'amministratore di aggiungere un veicolo da acquistare\n\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Automobile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veicolo aggiunto con successo"
+          },
+            "400": {
+                "description": "Errore nell'inserimento del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato ad inserire il veicolo"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori/modifica/{id}": {
+      "put": {
+        "summary": "Modifica Veicolo Amministratore",
+        "tags": [
+          "Gestione Inventario [Amministratori]"
+        ],
+        "description": "Il sistema dovrà permettere all'amministratore di modificare un veicolo da acquistare\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Automobile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veicolo aggiornato con successo"
+          },
+            "400": {
+                "description": "Errore nella modifica del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato a modificare il veicolo"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori/elimina/{id}": {
+      "delete": {
+        "summary": "Eliminazione Veicolo Amministratore",
+        "tags": [
+          "Gestione Inventario [Amministratori]"
+        ],
+        "description": "Il sistema dovrà permettere all'amministratore di eliminare un veicolo da acquistare\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veicolo eliminato con successo"
+          },
+            "400": {
+                "description": "Errore nell'eliminazione del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato ad eliminare il veicolo"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori-acquisto": {
+      "get": {
+        "summary": "Visualizza Veicoli Acquisto",
+        "tags": [
+          "Gestione Inventario [Amministratore-Acquisto]"
+        ],
+        "description": "RF-GAA-GI-4\nIl sistema dovrà permettere all'amministratore acquisto di visualizzare tutti i veicoli da acquistare\n\n",
+        "responses": {
+          "200": {
+            "description": "Veicoli destinati all'acquisto",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automobile"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione dei veicoli"
+            },
+            "401": {
+              "description": "Non autorizzato a visualizzare i veicoli"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori-acquisto/modifica/{id}": {
+      "put": {
+        "summary": "Modifica Veicoli Acquisto",
+        "tags": [
+          "Gestione Inventario [Amministratore-Acquisto]"
+        ],
+        "description": "RF-GAA-GI-5\nIl sistema dovrà permettere all'amministratore acquisto di aggiornare lo stato dei veicoli\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veicolo aggiornato correttamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automobile"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella modifica del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato a modificare il veicolo"
+            }
+        }
+      }
+    },
+    "/prenotazioni/amministratori-acquisto": {
+      "get": {
+        "summary": "Visualizza le prenotazioni effettuate dai clienti per un acquisto",
+        "tags": [
+          "Gestione Vendita [Amministratore-Acquisto]"
+        ],
+        "description": "RF-GAA-GV-1\nIl sistema dovrà permettere all'amministratore acquisto di visualizzare le prenotazioni di vendita\n\n",
+        "responses": {
+          "200": {
+            "description": "Prenotazioni effettuate dagli utenti per un acquisto",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione delle prenotazioni"
+            },
+            "401": {
+                "description": "Non autorizzato a visualizzare le prenotazioni"
+            }
+        }
+      }
+    },
+    "/prenotazioni/amministratori-acquisto/modifica/{id}": {
+      "put": {
+        "summary": "Modifica le prenotazioni effettuate dai clienti per un acquisto",
+        "tags": [
+          "Gestione Vendita [Amministratore-Acquisto]"
+        ],
+        "description": "RF-GAA-GV-2\nl sistema dovrà permettere all'amministratore acquisto di accettare le prenotazioni di vendita dei clienti\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prenotazione modificata con successo"
+          },
+            "400": {
+                "description": "Errore nella modifica della prenotazione"
+            },
+            "401": {
+                "description": "Non autorizzato a modificare la prenotazione"
+            }
+        }
+      }
+    },
+    "/ordine/amministratori-acquisto/conferma": {
+      "post": {
+        "summary": "Inserimento un ordine di vendita",
+        "tags": [
+          "Gestione Vendita [Amministratore-Acquisto]"
+        ],
+        "description": "Permette all'amministratore acquisto di inserire un ordine di vendita una volta confermata una prenotazione e confermata la vendita",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ordine"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ordine inserito con successo"
+          },
+            "400": {
+                "description": "Errore nell'inserimento dell'ordine"
+            },
+            "401": {
+                "description": "Non autorizzato ad inserire l'ordine"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori-noleggio": {
+      "get": {
+        "summary": "Visualizza Veicoli Noleggio",
+        "tags": [
+          "Gestione Inventario [Amministratore-Noleggio]"
+        ],
+        "description": "RF-GAN-GI-4\nIl sistema dovrà permettere all'amministratore noleggio di visualizzare tutti i veicoli da noleggio\n\n",
+        "responses": {
+          "200": {
+            "description": "Veicoli destinati al noleggio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Automobile"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione dei veicoli"
+            },
+            "401": {
+              "description": "Non autorizzato a visualizzare i veicoli"
+            }
+        }
+      }
+    },
+    "/veicoli/amministratori-noleggio/modifica/{id}": {
+      "put": {
+        "summary": "Modifica Veicolo Noleggio",
+        "tags": [
+          "Gestione Inventario [Amministratore-Noleggio]"
+        ],
+        "description": "RF-GAN-GI-2\nIl sistema dovrà permettere all'amministratore noleggio di modificare un veicolo da noleggio\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Automobile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veicolo aggiornato con successo"
+          },
+            "400": {
+                "description": "Errore nella modifica del veicolo"
+            },
+            "401": {
+                "description": "Non autorizzato a modificare il veicolo"
+            }
+        }
+      }
+    },
+    "/prenotazioni/amministratori-noleggio": {
+      "get": {
+        "summary": "Visualizza le prenotazioni effettuate dai clienti per un noleggio",
+        "tags": [
+          "Gestione Noleggio [Amministratore-Noleggio]"
+        ],
+        "description": "RF-GAN-GN-1\nl sistema dovrà permettere all'amministratore noleggio di visualizzare le prenotazioni di noleggio (fatta da un cliente)\n\n",
+        "responses": {
+          "200": {
+            "description": "Prenotazioni effettuate dagli utenti per un noleggio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella visualizzazione delle prenotazioni"
+            },
+            "401": {
+              "description": "Non autorizzato a visualizzare le prenotazioni"
+            }
+        }
+      }
+    },
+    "/prenotazioni/amministratori-noleggio/modifica/{id}": {
+      "put": {
+        "summary": "Modifica le prenotazioni effettuate dai clienti per un noleggio",
+        "tags": [
+          "Gestione Noleggio [Amministratore-Noleggio]"
+        ],
+        "description": "RF-GAN-GN-2\nl sistema dovrà permettere all'amministratore noleggio di modificare le prenotazioni di noleggio\n\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prenotazioni effettuate dagli utenti per un noleggio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
+          },
+            "400": {
+                "description": "Errore nella modifica della prenotazione"
+            },
+            "401": {
+                "description": "Non autorizzato a modificare la prenotazione"
+            }
+        }
+      }
+    },
+    "/noleggio/amministratori-noleggio/conferma": {
+      "post": {
+        "summary": "Inserimento ordine noleggio",
+        "tags": [
+          "Gestione Noleggio [Amministratore-Noleggio]"
+        ],
+        "description": "RF-GAN-GN-3\nl sistema dovrà permettere all'amministratore noleggio di chiudere le prenotazioni di noleggio\n\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ordine"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ordine inserito con successo"
+          },
+            "400": {
+                "description": "Errore nell'inserimento dell'ordine"
+            },
+            "401": {
+                "description": "Non autorizzato ad inserire l'ordine"
+            }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Utente": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number",
+                "description": "ID dell'utente"
+            },
+          "codicefiscale": {
+            "type": "string",
+            "description": "codice fiscale dell'utente"
+          }
+        },
+        "description": "Dettagli dell'utente"
+      },
+      "Automobile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "ID dell'automobile"
+          },
+          "marca": {
+            "type": "string",
+            "description": "marca dell'automobile"
+          },
+          "modello": {
+            "type": "string",
+            "description": "modello dell'automobile"
+          },
+          "prezzo_acquisto": {
+            "type": "number",
+            "description": "prezzo dell'automobile in acquisto"
+          },
+          "prezzo_noleggio_giornaliero": {
+            "type": "number",
+            "description": "prezzo dell'automobile in noleggio"
+          },
+          "disponibile": {
+            "type": "boolean",
+            "description": "disponibilità dell'automobile"
+          },
+          "quantita": {
+            "type": "number",
+            "description": "quantità dell'automobile disponibile"
+          },
+          "cavalli": {
+            "type": "number",
+            "description": "cavalli dell'automobile"
+          },
+            "cilindrata": {
+                "type": "number",
+                "description": "cilindrata dell'automobile"
+            },
+          "posti_a_sedere": {
+            "type": "number",
+            "description": "posti a sedere dell'automobile"
+          },
+          "carburante": {
+            "type": "string",
+            "description": "carburante dell'automobile"
+          },
+          "targa": {
+            "type": "string",
+            "description": "targa dell'automobile"
+          },
+          "tipo_di_destinazione": {
+            "type": "string",
+            "description": "tipo di destinazione dell'automobile"
+          }
+        }
+      },
+      "Prenotazione": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "ID dell'automobile"
+          },
+          "id_automobile":{
+            "type":"number",
+            "description": "ID dell'automobile"
+          },
+          "id_utente": {
+            "type": "string",
+            "description": "ID dell'utente"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "il tipo della prenotazione noleggio/acquisto"
+          },
+          "data_prenotazione": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data della richiesta di acquisto"
+          },
+          "stato": {
+            "type": "string",
+            "description": "stato della prenotazione che può essere emessa/accetata/rifiutata"
+          }
+        }
+      },
+      "Ordine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "id dell'ordine"
+          },
+          "id_prenotazione":{
+            "type": "integer",
+            "description": "id della prenotazione"
+          },
+          "id_utente": {
+            "type": "string",
+            "description": "id associato all'utente che ha completato l'ordine (ricavabile dalla prenotazione)"
+          },
+          "id_automobile": {
+            "type": "integer",
+            "description": "id dell'automobile associata (ricavabile dalla prenotazione)"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "tipo dell'ordine (ricavabile dalla prenotazione)"
+          },
+          "data_acquisto_automobile": {
+            "type": "string",
+            "format": "date-time",
+            "description": "data in cui l'auto è stata acquistata"
+          },
+          "data_noleggio_inizio": {
+            "type": "string",
+            "format": "date-time",
+            "description": "data in cui l'auto è stata noleggiata iniziale"
+          },
+          "data_noleggio_fine": {
+            "type": "string",
+            "format": "date-time",
+            "description": "data in cui l'auto è da consegnare al termine del noleggio"
+          },
+          "prezzo_acquisto_auto_ordine": {
+            "type": "number",
+            "description": "prezzo dell'auto acquistata"
+          },
+            "prezzo_noleggio_giornaliero_ordine": {
+                "type": "number",
+                "description": "prezzo dell'auto noleggiata"
+            }
+        }
+      }
+    }
+  }
+}
+
