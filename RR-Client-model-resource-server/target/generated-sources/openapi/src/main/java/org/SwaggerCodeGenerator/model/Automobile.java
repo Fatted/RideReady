@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.springframework.validation.annotation.Validated;
 
 
 import java.util.*;
@@ -20,15 +19,13 @@ import javax.annotation.Generated;
  * Automobile
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-14T18:47:49.701084700+02:00[Europe/Rome]")
-@Validated
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
 public class Automobile {
 
   @JsonProperty("id")
   private BigDecimal id;
 
   @JsonProperty("marca")
-  @NotBlank(message = "La marca dell'automobile non può essere vuota")
   private String marca;
 
   @JsonProperty("modello")
