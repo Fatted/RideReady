@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/org/SwaggerCodeGenerator/api/AcquistiApi.java
+src/main/java/org/SwaggerCodeGenerator/api/ApiUtil.java
+src/main/java/org/SwaggerCodeGenerator/api/NoleggioApi.java
+src/main/java/org/SwaggerCodeGenerator/api/OrdineApi.java
+src/main/java/org/SwaggerCodeGenerator/api/PrenotazioniApi.java
+src/main/java/org/SwaggerCodeGenerator/api/VeicoliApi.java
+src/main/java/org/SwaggerCodeGenerator/model/Automobile.java
+src/main/java/org/SwaggerCodeGenerator/model/Ordine.java
+src/main/java/org/SwaggerCodeGenerator/model/Prenotazione.java
+src/main/java/org/SwaggerCodeGenerator/model/Utente.java

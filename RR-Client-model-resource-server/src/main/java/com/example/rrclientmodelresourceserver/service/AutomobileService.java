@@ -3,17 +3,32 @@ package com.example.rrclientmodelresourceserver.service;
 import com.example.rrclientmodelresourceserver.repository.AutomobileRepository;
 import com.example.rrclientmodelresourceserver.DTO.AutomobileDTO;
 import com.example.rrclientmodelresourceserver.model.AutomobileEntity;
+import jakarta.validation.ConstraintViolationException;
 import org.SwaggerCodeGenerator.model.Automobile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
+import jakarta.validation.Valid;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
+
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
+@Validated
 public class AutomobileService {
 
     @Autowired
     private AutomobileRepository automobileRepository;
+
+    @Autowired
+    private Validator validator;
 
     public AutomobileDTO veicoliIdGet(Integer id){
         AutomobileEntity automobileEntity = automobileRepository.findById(id).orElse(null);
@@ -22,7 +37,16 @@ public class AutomobileService {
     }
 
     public void veicoliAmministratoriInserimentoPost(Automobile automobile){
-        AutomobileDTO automobileDTO = convertToDTO(automobile);
+        @Valid AutomobileDTO automobileDTO = convertToDTO(automobile);
+        Set<ConstraintViolation<@Valid AutomobileDTO>> violations = validator.validate(automobileDTO);
+        if (!violations.isEmpty()) {
+            Map<String, String> errorMap = violations.stream()
+                    .collect(Collectors.toMap(
+                            violation -> violation.getPropertyPath().toString(),
+                            ConstraintViolation::getMessage
+                    ));
+            throw new ConstraintViolationException(errorMap.toString(), new HashSet<>(violations));
+        }
         automobileRepository.save(convertToEntity(automobileDTO));
     }
 

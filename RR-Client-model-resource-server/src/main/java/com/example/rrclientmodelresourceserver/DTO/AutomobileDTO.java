@@ -2,25 +2,44 @@ package com.example.rrclientmodelresourceserver.DTO;
 
 import com.example.rrclientmodelresourceserver.model.OrdineEntity;
 import com.example.rrclientmodelresourceserver.model.PrenotazioneEntity;
+import com.example.rrclientmodelresourceserver.validation.Targa;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.validation.annotation.Validated;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
-
+@Validated
 public class AutomobileDTO {
 
     private Integer id;
+
+    @NotBlank(message = "Il campo marca non può essere vuoto")
     private String marca;
+
+    @NotBlank(message = "Il campo modello non può essere vuoto")
     private String modello;
+
     private Double prezzoAcquisto;
     private Double prezzoNoleggioGiornaliero;
     private Boolean disponibile;
+
+    @Min(value = 1, message = "Il campo quantità deve essere maggiore di 0")
     private Integer quantita;
     private Integer cavalli;
     private Double cilindrata;
     private Integer postiASedere;
     private String carburante;
+
+    @Targa
     private String targa;
+
+    @NotBlank(message = "Il campo tipo di destinazione non può essere vuoto")
+    @Pattern(regexp = "^(noleggio|acquisto)$", message = "Il campo tipo di destinazione può essere solo 'noleggio' o 'acquisto'")
     private String tipoDiDestinazione;
+
     private Set<OrdineEntity> ordines;
     private Set<PrenotazioneEntity> prenotaziones;
 
