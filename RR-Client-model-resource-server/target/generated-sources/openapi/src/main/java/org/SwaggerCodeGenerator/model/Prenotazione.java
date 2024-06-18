@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * Prenotazione
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-18T09:17:50.691915500+02:00[Europe/Rome]")
 public class Prenotazione {
 
   @JsonProperty("id")

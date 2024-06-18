@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-18T09:17:50.691915500+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "noleggio", description = "the noleggio API")
 public interface NoleggioApi {
@@ -53,7 +53,9 @@ public interface NoleggioApi {
         summary = "Inserimento ordine noleggio",
         tags = { "Gestione Noleggio [Amministratore-Noleggio]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Ordine inserito con successo"),
+            @ApiResponse(responseCode = "200", description = "Ordine inserito con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Ordine.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nell'inserimento dell'ordine"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato ad inserire l'ordine")
         }
@@ -61,11 +63,21 @@ public interface NoleggioApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/noleggio/amministratori-noleggio/conferma",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> noleggioAmministratoriNoleggioConfermaPost(
+    default ResponseEntity<Ordine> noleggioAmministratoriNoleggioConfermaPost(
         @Parameter(name = "Ordine", description = "", required = true) @Valid @RequestBody Ordine ordine
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"prezzo_noleggio_giornaliero_ordine\" : 5.637376656633329, \"tipo\" : \"tipo\", \"id_automobile\" : 1, \"data_noleggio_fine\" : \"2000-01-23T04:56:07.000+00:00\", \"data_acquisto_automobile\" : \"2000-01-23T04:56:07.000+00:00\", \"data_noleggio_inizio\" : \"2000-01-23T04:56:07.000+00:00\", \"prezzo_acquisto_auto_ordine\" : 5.962133916683182, \"id\" : 0, \"id_prenotazione\" : 6, \"id_utente\" : \"id_utente\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

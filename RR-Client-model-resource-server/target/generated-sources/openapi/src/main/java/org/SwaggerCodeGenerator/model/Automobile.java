@@ -2,14 +2,21 @@ package org.SwaggerCodeGenerator.model;
 
 import java.net.URI;
 import java.util.Objects;
+
+import com.example.rrclientmodelresourceserver.validation.Targa;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
 
 
 import java.util.*;
@@ -18,17 +25,19 @@ import javax.annotation.Generated;
 /**
  * Automobile
  */
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
+@Validated
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-18T09:17:50.691915500+02:00[Europe/Rome]")
 public class Automobile {
 
   @JsonProperty("id")
   private BigDecimal id;
 
   @JsonProperty("marca")
+  @NotBlank(message = "Il campo marca non può essere vuoto")
   private String marca;
 
   @JsonProperty("modello")
+  @NotBlank(message = "Il campo modello non può essere vuoto")
   private String modello;
 
   @JsonProperty("prezzo_acquisto")
@@ -41,6 +50,7 @@ public class Automobile {
   private Boolean disponibile;
 
   @JsonProperty("quantita")
+  @Min(value = 1, message = "Il campo quantità deve essere maggiore di 0")
   private BigDecimal quantita;
 
   @JsonProperty("cavalli")
@@ -56,9 +66,12 @@ public class Automobile {
   private String carburante;
 
   @JsonProperty("targa")
+  @Targa
   private String targa;
 
   @JsonProperty("tipo_di_destinazione")
+  @NotBlank(message = "Il campo tipo di destinazione non può essere vuoto")
+  @Pattern(regexp = "^(noleggio|acquisto)$", message = "Il campo tipo di destinazione può essere solo 'noleggio' o 'acquisto'")
   private String tipoDiDestinazione;
 
   public Automobile id(BigDecimal id) {

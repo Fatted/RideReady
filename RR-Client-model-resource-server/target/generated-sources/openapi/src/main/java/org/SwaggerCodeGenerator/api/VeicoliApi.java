@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-18T09:17:50.691915500+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "veicoli", description = "the veicoli API")
 public interface VeicoliApi {
@@ -138,16 +138,19 @@ public interface VeicoliApi {
         summary = "Eliminazione Veicolo Amministratore",
         tags = { "Gestione Inventario [Amministratori]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo eliminato con successo"),
+            @ApiResponse(responseCode = "200", description = "Veicolo eliminato con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nell'eliminazione del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato ad eliminare il veicolo")
         }
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/veicoli/amministratori/elimina/{id}"
+        value = "/veicoli/amministratori/elimina/{id}",
+        produces = { "application/json" }
     )
-    default ResponseEntity<Void> veicoliAmministratoriEliminaIdDelete(
+    default ResponseEntity<String> veicoliAmministratoriEliminaIdDelete(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
@@ -169,7 +172,9 @@ public interface VeicoliApi {
         summary = "Inserimento Veicolo Amministratore",
         tags = { "Gestione Inventario [Amministratori]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo aggiunto con successo"),
+            @ApiResponse(responseCode = "200", description = "Veicolo aggiunto con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Automobile.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nell'inserimento del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato ad inserire il veicolo")
         }
@@ -177,11 +182,21 @@ public interface VeicoliApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/veicoli/amministratori/inserimento",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> veicoliAmministratoriInserimentoPost(
+    default ResponseEntity<Automobile> veicoliAmministratoriInserimentoPost(
         @Parameter(name = "Automobile", description = "", required = true) @Valid @RequestBody Automobile automobile
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"cilindrata\" : 2.3021358869347655, \"modello\" : \"modello\", \"targa\" : \"targa\", \"marca\" : \"marca\", \"carburante\" : \"carburante\", \"posti_a_sedere\" : 7.061401241503109, \"prezzo_acquisto\" : 6.027456183070403, \"tipo_di_destinazione\" : \"tipo_di_destinazione\", \"id\" : 0.8008281904610115, \"quantita\" : 5.962133916683182, \"cavalli\" : 5.637376656633329, \"disponibile\" : true, \"prezzo_noleggio_giornaliero\" : 1.4658129805029452 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -202,7 +217,9 @@ public interface VeicoliApi {
         summary = "Modifica Veicolo Amministratore",
         tags = { "Gestione Inventario [Amministratori]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato con successo"),
+            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Automobile.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nella modifica del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato a modificare il veicolo")
         }
@@ -210,12 +227,22 @@ public interface VeicoliApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/veicoli/amministratori/modifica/{id}",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> veicoliAmministratoriModificaIdPut(
+    default ResponseEntity<Automobile> veicoliAmministratoriModificaIdPut(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id,
         @Parameter(name = "Automobile", description = "", required = true) @Valid @RequestBody Automobile automobile
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"cilindrata\" : 2.3021358869347655, \"modello\" : \"modello\", \"targa\" : \"targa\", \"marca\" : \"marca\", \"carburante\" : \"carburante\", \"posti_a_sedere\" : 7.061401241503109, \"prezzo_acquisto\" : 6.027456183070403, \"tipo_di_destinazione\" : \"tipo_di_destinazione\", \"id\" : 0.8008281904610115, \"quantita\" : 5.962133916683182, \"cavalli\" : 5.637376656633329, \"disponibile\" : true, \"prezzo_noleggio_giornaliero\" : 1.4658129805029452 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -278,7 +305,9 @@ public interface VeicoliApi {
         summary = "Modifica Veicolo Noleggio",
         tags = { "Gestione Inventario [Amministratore-Noleggio]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato con successo"),
+            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Automobile.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nella modifica del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato a modificare il veicolo")
         }
@@ -286,12 +315,22 @@ public interface VeicoliApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/veicoli/amministratori-noleggio/modifica/{id}",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> veicoliAmministratoriNoleggioModificaIdPut(
+    default ResponseEntity<Automobile> veicoliAmministratoriNoleggioModificaIdPut(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id,
         @Parameter(name = "Automobile", description = "", required = true) @Valid @RequestBody Automobile automobile
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"cilindrata\" : 2.3021358869347655, \"modello\" : \"modello\", \"targa\" : \"targa\", \"marca\" : \"marca\", \"carburante\" : \"carburante\", \"posti_a_sedere\" : 7.061401241503109, \"prezzo_acquisto\" : 6.027456183070403, \"tipo_di_destinazione\" : \"tipo_di_destinazione\", \"id\" : 0.8008281904610115, \"quantita\" : 5.962133916683182, \"cavalli\" : 5.637376656633329, \"disponibile\" : true, \"prezzo_noleggio_giornaliero\" : 1.4658129805029452 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

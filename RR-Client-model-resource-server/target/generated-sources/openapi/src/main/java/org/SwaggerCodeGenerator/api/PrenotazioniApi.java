@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-17T12:34:11.812074600+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-18T09:17:50.691915500+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "prenotazioni", description = "the prenotazioni API")
 public interface PrenotazioniApi {
@@ -95,18 +95,30 @@ public interface PrenotazioniApi {
         summary = "Modifica le prenotazioni effettuate dai clienti per un acquisto",
         tags = { "Gestione Vendita [Amministratore-Acquisto]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Prenotazione modificata con successo"),
+            @ApiResponse(responseCode = "200", description = "Prenotazione modificata con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Prenotazione.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nella modifica della prenotazione"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato a modificare la prenotazione")
         }
     )
     @RequestMapping(
         method = RequestMethod.PUT,
-        value = "/prenotazioni/amministratori-acquisto/modifica/{id}"
+        value = "/prenotazioni/amministratori-acquisto/modifica/{id}",
+        produces = { "application/json" }
     )
-    default ResponseEntity<Void> prenotazioniAmministratoriAcquistoModificaIdPut(
+    default ResponseEntity<List<Prenotazione>> prenotazioniAmministratoriAcquistoModificaIdPut(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"data_prenotazione\" : \"2000-01-23T04:56:07.000+00:00\", \"stato\" : \"stato\", \"tipo\" : \"tipo\", \"id_automobile\" : 6.027456183070403, \"id\" : 0.8008281904610115, \"id_utente\" : \"id_utente\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -254,7 +266,9 @@ public interface PrenotazioniApi {
         summary = "Inserimento prenotazione veicolo acquisto",
         tags = { "Gestione Prenotazione Acquisto ed Acquisto [Clienti]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Prenotazione avvenuta con successo"),
+            @ApiResponse(responseCode = "200", description = "Prenotazione avvenuta con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Prenotazione.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nella prenotazione del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato a prenotare il veicolo")
         }
@@ -262,11 +276,21 @@ public interface PrenotazioniApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/prenotazioni/clienti/acquisto/inserimento",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> prenotazioniClientiAcquistoInserimentoPost(
+    default ResponseEntity<Prenotazione> prenotazioniClientiAcquistoInserimentoPost(
         @Parameter(name = "Prenotazione", description = "", required = true) @Valid @RequestBody Prenotazione prenotazione
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"data_prenotazione\" : \"2000-01-23T04:56:07.000+00:00\", \"stato\" : \"stato\", \"tipo\" : \"tipo\", \"id_automobile\" : 6.027456183070403, \"id\" : 0.8008281904610115, \"id_utente\" : \"id_utente\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -276,7 +300,7 @@ public interface PrenotazioniApi {
      * GET /prenotazioni/clienti/noleggio : Visualizza prenotazioni effettuate dall&#39;utente
      * RF-GC-GN-3 Il sistema dovrà permettere al cliente di visualizzare i propri contratti di noleggio  
      *
-     * @param id  (required)
+     * @param principal  (required)
      * @return Prenotazioni noleggio effettuate (status code 200)
      *         or Errore nella visualizzazione delle prenotazioni (status code 400)
      *         or Non autorizzato a visualizzare le prenotazioni (status code 401)
@@ -299,7 +323,7 @@ public interface PrenotazioniApi {
         produces = { "application/json" }
     )
     default ResponseEntity<List<Prenotazione>> prenotazioniClientiNoleggioGet(
-        @Parameter(name = "id", description = "", required = true) @RequestHeader(value = "id", required = true) BigDecimal id
+        @Parameter(name = "principal", description = "", required = true) @RequestHeader(value = "principal", required = true) String principal
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -329,7 +353,9 @@ public interface PrenotazioniApi {
         summary = "Inserimento prenotazione veicolo per il noleggio",
         tags = { "Gestione Prenotazione Noleggi e Noleggi [Cliente]" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Prenotazione avvenuta con successo"),
+            @ApiResponse(responseCode = "200", description = "Prenotazione avvenuta con successo", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Prenotazione.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Errore nella prenotazione del veicolo"),
             @ApiResponse(responseCode = "401", description = "Non autorizzato a prenotare il veicolo")
         }
@@ -337,11 +363,21 @@ public interface PrenotazioniApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/prenotazioni/clienti/noleggio/inserimento",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> prenotazioniClientiNoleggioInserimentoPost(
+    default ResponseEntity<Prenotazione> prenotazioniClientiNoleggioInserimentoPost(
         @Parameter(name = "Prenotazione", description = "", required = true) @Valid @RequestBody Prenotazione prenotazione
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"data_prenotazione\" : \"2000-01-23T04:56:07.000+00:00\", \"stato\" : \"stato\", \"tipo\" : \"tipo\", \"id_automobile\" : 6.027456183070403, \"id\" : 0.8008281904610115, \"id_utente\" : \"id_utente\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
