@@ -16,10 +16,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/veicoli/*").permitAll()
-                        .requestMatchers("/clienti/").hasAuthority("SCOPE_clienti")
-                        .requestMatchers("/amministratori-acquisto/").hasAuthority("SCOPE_amministratori-acquisto")
-                        .requestMatchers("/amministratori-noleggio/").hasAuthority("SCOPE_amministratori-noleggio")
+                        .requestMatchers("/veicoli/amministratori/**").hasAnyAuthority("SCOPE_amministratori-acquisto","SCOPE_amministratori-noleggio")
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt()
