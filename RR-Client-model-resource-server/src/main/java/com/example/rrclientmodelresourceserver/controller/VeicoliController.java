@@ -41,18 +41,18 @@ public class VeicoliController implements VeicoliApi {
 
     @Override
     public ResponseEntity<List<Automobile>> veicoliAmministratoriNoleggioGet() {
-        return VeicoliApi.super.veicoliAmministratoriNoleggioGet();
+        return ResponseEntity.ok(veicoliService.veicoliAmministratoriNoleggioGet());
     }
 
     @Override
     public ResponseEntity<List<Automobile>> veicoliAmministratoriAcquistoGet() {
-        return VeicoliApi.super.veicoliAmministratoriAcquistoGet();
+        return ResponseEntity.ok(veicoliService.veicoliAmministratoriAcquistoGet());
     }
 
 
     @Override
     public ResponseEntity<List<Automobile>> veicoliClientiAcquistoGet() {
-        return VeicoliApi.super.veicoliClientiAcquistoGet();
+        return ResponseEntity.ok(veicoliService.veicoliAmministratoriAcquistoGet());
     }
 
     @Override

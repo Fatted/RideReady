@@ -3,9 +3,14 @@ package com.example.rrclientmodelresourceserver.service;
 import com.example.rrclientmodelresourceserver.repository.AutomobileRepository;
 import com.example.rrclientmodelresourceserver.model.AutomobileEntity;
 import com.example.rrclientmodelresourceserver.validation.ResourceNotFoundException;
+import jakarta.transaction.Transactional;
 import org.SwaggerCodeGenerator.model.Automobile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.rrclientmodelresourceserver.converter.AutomobileConverter.convertToEntity;
 import static com.example.rrclientmodelresourceserver.converter.AutomobileConverter.convertToSwaggerSchema;
@@ -64,6 +69,25 @@ public class VeicoliService {
         }
         automobileRepository.delete(automobileEntity);
         return "Automobile eliminata";
+    }
+
+    //Realizzato con query hql
+    @Transactional
+    public List<Automobile> veicoliAmministratoriNoleggioGet(){
+      List<Automobile> automobili_noleggio= new ArrayList<>();
+        for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGet()) {
+            automobili_noleggio.add(convertToSwaggerSchema(automobile));
+        }
+      return automobili_noleggio;
+    }
+
+    @Transactional
+    public List<Automobile> veicoliAmministratoriAcquistoGet(){
+        List<Automobile> automobili_acquisto= new ArrayList<>();
+        for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGet()) {
+            automobili_acquisto.add(convertToSwaggerSchema(automobile));
+        }
+        return automobili_acquisto;
     }
 
 }

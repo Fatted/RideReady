@@ -17,6 +17,9 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/veicoli/amministratori/**").hasAnyAuthority("SCOPE_amministratori-acquisto","SCOPE_amministratori-noleggio")
+                        .requestMatchers("/veicoli/amministratori-noleggio/**").hasAuthority("SCOPE_amministratori-noleggio")
+                        .requestMatchers("/veicoli/amministratori-acquisto/**").hasAuthority("SCOPE_amministratori-acquisto")
+                        .requestMatchers("/veicoli/clienti/**").hasAnyAuthority("SCOPE_clienti")
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt()
