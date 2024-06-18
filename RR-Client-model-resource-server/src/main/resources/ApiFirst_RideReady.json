@@ -122,7 +122,14 @@
         },
         "responses": {
           "200": {
-            "description": "Prenotazione avvenuta con successo"
+            "description": "Prenotazione avvenuta con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prenotazione"
+                }
+              }
+            }
           },
           "400": {
             "description": "Errore nella prenotazione del veicolo"
@@ -232,7 +239,14 @@
         },
         "responses": {
           "200": {
-            "description": "Prenotazione avvenuta con successo"
+            "description": "Prenotazione avvenuta con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prenotazione"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nella prenotazione del veicolo"
@@ -252,11 +266,11 @@
         "description": "RF-GC-GN-3\nIl sistema dovrà permettere al cliente di visualizzare i propri contratti di noleggio\n\n",
         "parameters": [
           {
-            "name": "id",
+            "name": "principal",
             "in": "header",
             "required": true,
             "schema": {
-              "type": "number"
+              "type": "string"
             }
           }
         ],
@@ -342,7 +356,14 @@
         },
         "responses": {
           "200": {
-            "description": "Veicolo aggiunto con successo"
+            "description": "Veicolo aggiunto con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automobile"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nell'inserimento del veicolo"
@@ -382,7 +403,14 @@
         },
         "responses": {
           "200": {
-            "description": "Veicolo aggiornato con successo"
+            "description": "Veicolo aggiornato con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automobile"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nella modifica del veicolo"
@@ -412,7 +440,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Veicolo eliminato con successo"
+            "description": "Veicolo eliminato con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nell'eliminazione del veicolo"
@@ -476,7 +511,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Automobile"
                   }
@@ -542,7 +576,16 @@
         ],
         "responses": {
           "200": {
-            "description": "Prenotazione modificata con successo"
+            "description": "Prenotazione modificata con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Prenotazione"
+                  }
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nella modifica della prenotazione"
@@ -572,7 +615,14 @@
         },
         "responses": {
           "200": {
-            "description": "Ordine inserito con successo"
+            "description": "Ordine inserito con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ordine"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nell'inserimento dell'ordine"
@@ -642,7 +692,14 @@
         },
         "responses": {
           "200": {
-            "description": "Veicolo aggiornato con successo"
+            "description": "Veicolo aggiornato con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Automobile"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nella modifica del veicolo"
@@ -706,7 +763,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Prenotazione"
                   }
@@ -742,7 +798,14 @@
         },
         "responses": {
           "200": {
-            "description": "Ordine inserito con successo"
+            "description": "Ordine inserito con successo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ordine"
+                }
+              }
+            }
           },
             "400": {
                 "description": "Errore nell'inserimento dell'ordine"
