@@ -1,5 +1,6 @@
 package com.example.rrclientmodelresourceserver.config;
 
+import com.example.rrclientmodelresourceserver.validation.CustomAccessDeniedHandler;
 import com.example.rrclientmodelresourceserver.validation.CustomAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,9 @@ public class SecurityConfig {
     @Autowired
     private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
+    @Autowired
+    private CustomAccessDeniedHandler customAccessDeniedHandler;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
@@ -25,6 +29,9 @@ public class SecurityConfig {
                         .jwt()
                         .and()
                         .authenticationEntryPoint(customAuthenticationEntryPoint)
+                )
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(customAccessDeniedHandler)
                 );
         return http.build();
     }

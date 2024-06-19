@@ -10,10 +10,10 @@ import java.util.List;
 public interface AutomobileRepository extends JpaRepository<AutomobileEntity, Integer>{
 
     @Transactional
-    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='noleggio' ")
+    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='noleggio' and a.disponibile = true")
     List<AutomobileEntity> veicoliNoleggioGet();
 
     @Transactional
-    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='acquisto' ")
+    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='acquisto' and a.disponibile = true")
     List<AutomobileEntity> veicoliAcquistoGet();
 }
