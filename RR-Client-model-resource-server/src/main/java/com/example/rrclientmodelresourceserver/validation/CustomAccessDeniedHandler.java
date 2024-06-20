@@ -19,13 +19,13 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        logger.info("CustomAccessDeniedHandler");
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        response.setContentType("application/json");
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Forbidden");
-        error.put("message", "Accesso negato alla risorsa");
-        response.getWriter().write(new ObjectMapper().writeValueAsString(error));
+        logger.info("CustomAccessDeniedHandler"); //logger
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN); //setto lo status della response a 403
+        response.setContentType("application/json"); //setto il content type della response a json
+        Map<String, String> error = new HashMap<>(); //creo una mappa per l'errore
+        error.put("error", "Forbidden"); //setto il tipo di errore
+        error.put("message", "Accesso negato alla risorsa"); //setto il messaggio di errore
+        response.getWriter().write(new ObjectMapper().writeValueAsString(error)); //scrivo la mappa come json
     }
 }
 

@@ -20,51 +20,51 @@ public class VeicoliController implements VeicoliApi {
     @Autowired
     private VeicoliService veicoliService;
 
-    @Override
+    @Override //override del metodo veicoliIdGet dell'interfaccia VeicoliApi con endpoint /veicoli/{id}
     public ResponseEntity<Automobile> veicoliIdGet(BigDecimal id) {
         logger.info("veicoliIdGet-controller");
         return ResponseEntity.ok(veicoliService.veicoliIdGet(id.intValue()));
     }
 
-    @Override
+    @Override //override del metodo veicoliAmministratoriInserimentoPost dell'interfaccia VeicoliApi con endpoint /veicoli/amministratori/inserimento
     public ResponseEntity<Automobile> veicoliAmministratoriInserimentoPost(Automobile automobile) {
         logger.info("veicoliAmministratoriInserimentoPost-controller");
         return ResponseEntity.ok(veicoliService.veicoliAmministratoriInserimentoPost(automobile));
     }
 
-    @Override
+    @Override //override del metodo veicoliAmministratoriModificaIdPut dell'interfaccia VeicoliApi con endpoint /veicoli/amministratori/modifica/{id}
     public ResponseEntity<Automobile> veicoliAmministratoriModificaIdPut(BigDecimal id, Automobile automobile) {
         logger.info("veicoliAmministratoriModificaIdPut-controller");
         return ResponseEntity.ok(veicoliService.veicoliAmministratoriModificaIdPut(id.intValue(), automobile));
     }
 
 
-    @Override
+    @Override //override del metodo veicoliAmministratoriEliminaIdDelete dell'interfaccia VeicoliApi con endpoint /veicoli/amministratori/elimina/{id}
     public ResponseEntity<String> veicoliAmministratoriEliminaIdDelete(BigDecimal id) {
         logger.info("veicoliAmministratoriEliminaIdDelete-controller");
         return ResponseEntity.ok(veicoliService.veicoliAmministratoriEliminaIdDelete(id.intValue()));
     }
 
-    @Override
+    @Override //override del metodo veicoliAmministratoriNoleggioGet dell'interfaccia VeicoliApi con endpoint /veicoli/amministratori/noleggio
     public ResponseEntity<List<Automobile>> veicoliAmministratoriNoleggioGet() {
         logger.info("veicoliAmministratoriNoleggioGet-controller");
         return ResponseEntity.ok(veicoliService.veicoliAmministratoriNoleggioGet());
     }
 
-    @Override
+    @Override //override del metodo veicoliAmministratoriAcquistoGet dell'interfaccia VeicoliApi con endpoint /veicoli/amministratori/acquisto
     public ResponseEntity<List<Automobile>> veicoliAmministratoriAcquistoGet() {
         logger.info("veicoliAmministratoriAcquistoGet-controller");
         return ResponseEntity.ok(veicoliService.veicoliAmministratoriAcquistoGet());
     }
 
 
-    @Override
+    @Override //override del metodo veicoliClientiAcquistoGet dell'interfaccia VeicoliApi con endpoint /veicoli/clienti/acquisto
     public ResponseEntity<List<Automobile>> veicoliClientiAcquistoGet() {
         logger.info("veicoliClientiAcquistoGet-controller");
         return ResponseEntity.ok(veicoliService.veicoliClientiAcquistoGet());
     }
 
-    @Override
+    @Override //override del metodo veicoliClientiNoleggioGet dell'interfaccia VeicoliApi con endpoint /veicoli/clienti/noleggio
     public ResponseEntity<List<Automobile>> veicoliClientiNoleggioGet() {
         logger.info("veicoliClientiNoleggioGet-controller");
         return ResponseEntity.ok(veicoliService.veicoliClientiNoleggioGet());

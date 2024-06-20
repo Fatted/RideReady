@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 public class AutomobileConverter {
 
+    //converte un'automobileEntity in un'automobile
     public static Automobile convertToSwaggerSchema(AutomobileEntity automobileEntity) {
         Automobile automobile = new Automobile();
         automobile.setId(BigDecimal.valueOf(automobileEntity.getId()));
@@ -25,6 +26,7 @@ public class AutomobileConverter {
         return automobile;
     }
 
+    //converte un'automobile in un'automobileEntity
     public static AutomobileEntity convertToEntity(Automobile automobile) {
         AutomobileEntity automobileEntity = new AutomobileEntity();
         automobileEntity.setId(automobile.getId().intValue());
