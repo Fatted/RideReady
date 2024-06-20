@@ -82,8 +82,8 @@ public class Automobile {
   /**
    * ID dell'automobile
    * @return id
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "id", description = "ID dell'automobile", required = false)
   public BigDecimal getId() {
     return id;
@@ -101,8 +101,8 @@ public class Automobile {
   /**
    * marca dell'automobile
    * @return marca
-  */
-  
+   */
+
   @Schema(name = "marca", description = "marca dell'automobile", required = false)
   public String getMarca() {
     return marca;
@@ -120,8 +120,8 @@ public class Automobile {
   /**
    * modello dell'automobile
    * @return modello
-  */
-  
+   */
+
   @Schema(name = "modello", description = "modello dell'automobile", required = false)
   public String getModello() {
     return modello;
@@ -139,8 +139,8 @@ public class Automobile {
   /**
    * prezzo dell'automobile in acquisto
    * @return prezzoAcquisto
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "prezzo_acquisto", description = "prezzo dell'automobile in acquisto", required = false)
   public BigDecimal getPrezzoAcquisto() {
     return prezzoAcquisto;
@@ -158,8 +158,8 @@ public class Automobile {
   /**
    * prezzo dell'automobile in noleggio
    * @return prezzoNoleggioGiornaliero
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "prezzo_noleggio_giornaliero", description = "prezzo dell'automobile in noleggio", required = false)
   public BigDecimal getPrezzoNoleggioGiornaliero() {
     return prezzoNoleggioGiornaliero;
@@ -177,8 +177,8 @@ public class Automobile {
   /**
    * disponibilità dell'automobile
    * @return disponibile
-  */
-  
+   */
+
   @Schema(name = "disponibile", description = "disponibilità dell'automobile", required = false)
   public Boolean getDisponibile() {
     return disponibile;
@@ -196,8 +196,8 @@ public class Automobile {
   /**
    * quantità dell'automobile disponibile
    * @return quantita
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "quantita", description = "quantità dell'automobile disponibile", required = false)
   public BigDecimal getQuantita() {
     return quantita;
@@ -215,8 +215,8 @@ public class Automobile {
   /**
    * cavalli dell'automobile
    * @return cavalli
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "cavalli", description = "cavalli dell'automobile", required = false)
   public BigDecimal getCavalli() {
     return cavalli;
@@ -234,8 +234,8 @@ public class Automobile {
   /**
    * cilindrata dell'automobile
    * @return cilindrata
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "cilindrata", description = "cilindrata dell'automobile", required = false)
   public BigDecimal getCilindrata() {
     return cilindrata;
@@ -253,8 +253,8 @@ public class Automobile {
   /**
    * posti a sedere dell'automobile
    * @return postiASedere
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "posti_a_sedere", description = "posti a sedere dell'automobile", required = false)
   public BigDecimal getPostiASedere() {
     return postiASedere;
@@ -272,8 +272,8 @@ public class Automobile {
   /**
    * carburante dell'automobile
    * @return carburante
-  */
-  
+   */
+
   @Schema(name = "carburante", description = "carburante dell'automobile", required = false)
   public String getCarburante() {
     return carburante;
@@ -291,8 +291,8 @@ public class Automobile {
   /**
    * targa dell'automobile
    * @return targa
-  */
-  
+   */
+
   @Schema(name = "targa", description = "targa dell'automobile", required = false)
   public String getTarga() {
     return targa;
@@ -310,8 +310,8 @@ public class Automobile {
   /**
    * tipo di destinazione dell'automobile
    * @return tipoDiDestinazione
-  */
-  
+   */
+
   @Schema(name = "tipo_di_destinazione", description = "tipo di destinazione dell'automobile", required = false)
   public String getTipoDiDestinazione() {
     return tipoDiDestinazione;
@@ -331,18 +331,18 @@ public class Automobile {
     }
     Automobile automobile = (Automobile) o;
     return Objects.equals(this.id, automobile.id) &&
-        Objects.equals(this.marca, automobile.marca) &&
-        Objects.equals(this.modello, automobile.modello) &&
-        Objects.equals(this.prezzoAcquisto, automobile.prezzoAcquisto) &&
-        Objects.equals(this.prezzoNoleggioGiornaliero, automobile.prezzoNoleggioGiornaliero) &&
-        Objects.equals(this.disponibile, automobile.disponibile) &&
-        Objects.equals(this.quantita, automobile.quantita) &&
-        Objects.equals(this.cavalli, automobile.cavalli) &&
-        Objects.equals(this.cilindrata, automobile.cilindrata) &&
-        Objects.equals(this.postiASedere, automobile.postiASedere) &&
-        Objects.equals(this.carburante, automobile.carburante) &&
-        Objects.equals(this.targa, automobile.targa) &&
-        Objects.equals(this.tipoDiDestinazione, automobile.tipoDiDestinazione);
+            Objects.equals(this.marca, automobile.marca) &&
+            Objects.equals(this.modello, automobile.modello) &&
+            Objects.equals(this.prezzoAcquisto, automobile.prezzoAcquisto) &&
+            Objects.equals(this.prezzoNoleggioGiornaliero, automobile.prezzoNoleggioGiornaliero) &&
+            Objects.equals(this.disponibile, automobile.disponibile) &&
+            Objects.equals(this.quantita, automobile.quantita) &&
+            Objects.equals(this.cavalli, automobile.cavalli) &&
+            Objects.equals(this.cilindrata, automobile.cilindrata) &&
+            Objects.equals(this.postiASedere, automobile.postiASedere) &&
+            Objects.equals(this.carburante, automobile.carburante) &&
+            Objects.equals(this.targa, automobile.targa) &&
+            Objects.equals(this.tipoDiDestinazione, automobile.tipoDiDestinazione);
   }
 
   @Override
@@ -382,4 +382,3 @@ public class Automobile {
     return o.toString().replace("\n", "\n    ");
   }
 }
-
