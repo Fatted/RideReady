@@ -10,6 +10,7 @@ import java.util.Set;
 public class UtenteEntity {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "codicefiscale", nullable = false, length = 16)

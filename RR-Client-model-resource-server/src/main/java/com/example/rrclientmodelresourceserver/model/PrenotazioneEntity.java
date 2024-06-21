@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 public class PrenotazioneEntity {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,7 +31,7 @@ public class PrenotazioneEntity {
     private String tipo;
 
     @Column(name = "data_prenotazione", nullable = false)
-    private Instant dataPrenotazione;
+    private LocalDate dataPrenotazione;
 
     @Column(name = "stato", nullable = false)
     private String stato;
@@ -69,11 +71,11 @@ public class PrenotazioneEntity {
         this.tipo = tipo;
     }
 
-    public Instant getDataPrenotazione() {
+    public LocalDate getDataPrenotazione() {
         return dataPrenotazione;
     }
 
-    public void setDataPrenotazione(Instant dataPrenotazione) {
+    public void setDataPrenotazione(LocalDate dataPrenotazione) {
         this.dataPrenotazione = dataPrenotazione;
     }
 

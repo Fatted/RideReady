@@ -1,7 +1,12 @@
 package org.SwaggerCodeGenerator.model;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.Objects;
+
+import com.example.rrclientmodelresourceserver.validation.CodiceFiscale;
+import com.example.rrclientmodelresourceserver.validation.DataFormato;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -9,9 +14,13 @@ import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.constraints.*;
 
 
 import java.util.*;
@@ -20,7 +29,7 @@ import javax.annotation.Generated;
 /**
  * Prenotazione
  */
-
+@Validated
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-19T12:30:19.977507800+02:00[Europe/Rome]")
 public class Prenotazione {
 
@@ -28,17 +37,22 @@ public class Prenotazione {
   private BigDecimal id;
 
   @JsonProperty("id_automobile")
+  @Min(value = 1L, message = "id_automobile deve essere maggiore di 1")
   private BigDecimal idAutomobile;
 
   @JsonProperty("id_utente")
+  @NotBlank(message = "id_utente non può essere nullo o vuoto")
+  @CodiceFiscale
   private String idUtente;
 
   @JsonProperty("tipo")
   private String tipo;
 
   @JsonProperty("data_prenotazione")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime dataPrenotazione;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  @NotNull(message = "La data di prenotazione è obbligatoria")
+  @DataFormato
+  private LocalDate dataPrenotazione;
 
   @JsonProperty("stato")
   private String stato;
@@ -119,7 +133,7 @@ public class Prenotazione {
     this.tipo = tipo;
   }
 
-  public Prenotazione dataPrenotazione(OffsetDateTime dataPrenotazione) {
+  public Prenotazione dataPrenotazione(LocalDate dataPrenotazione) {
     this.dataPrenotazione = dataPrenotazione;
     return this;
   }
@@ -130,11 +144,11 @@ public class Prenotazione {
   */
   @Valid 
   @Schema(name = "data_prenotazione", description = "Data della richiesta di acquisto", required = false)
-  public OffsetDateTime getDataPrenotazione() {
+  public LocalDate getDataPrenotazione() {
     return dataPrenotazione;
   }
 
-  public void setDataPrenotazione(OffsetDateTime dataPrenotazione) {
+  public void setDataPrenotazione(LocalDate dataPrenotazione) {
     this.dataPrenotazione = dataPrenotazione;
   }
 
