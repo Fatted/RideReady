@@ -37,7 +37,12 @@ public class PrenotazioniService {
     public Prenotazione prenotazioniClieentiAcquistoInserimentoPost(Prenotazione prenotazione) {
 
         AutomobileEntity automobileEntity=automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null); //cerco l'automobile con l'id passato
-        if(automobileEntity==null){ //se l'automobile non è presente nel database
+        if(automobileEntity!=null){ //se l'automobile non è presente nel database
+            if(!automobileEntity.getDisponibile() || !automobileEntity.getTipoDiDestinazione().equals("acquisto")){
+                throw new ResourceNotFoundException("Automobile non disponibile per l'acquisto"); //lancio un'eccezione catturata dal global exception handler
+            }
+        }else
+        {
             throw new ResourceNotFoundException("Automobile non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
         }
 
@@ -54,14 +59,19 @@ public class PrenotazioniService {
         prenotazione_acquisto.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente()));
         prenotazione_acquisto.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null));
         prenotazioniRepository.save(prenotazione_acquisto); //salvo la prenotazione
-        return prenotazione;
+
+        return convertToSwaggerSchema(prenotazione_acquisto);
     }
 
     public Prenotazione prenotazioniClieentiNoleggioInserimentoPost(Prenotazione prenotazione) {
 
         AutomobileEntity automobileEntity=automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null); //cerco l'automobile con l'id passato
-        if(automobileEntity==null){ //se l'automobile non è presente nel database
-            logger.info("Automobile non presente nel database");
+        if(automobileEntity!=null){ //se l'automobile non è presente nel database
+            if(!automobileEntity.getDisponibile() || !automobileEntity.getTipoDiDestinazione().equals("noleggio")){
+                throw new ResourceNotFoundException("Automobile non disponibile per il noleggio"); //lancio un'eccezione catturata dal global exception handler
+            }
+        }else
+        {
             throw new ResourceNotFoundException("Automobile non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
         }
 
@@ -72,13 +82,13 @@ public class PrenotazioniService {
             utenteRepository.save(utente); //salvo l'utente
         }
 
-        PrenotazioneEntity prenotazione_acquisto=convertToEntity(prenotazione);
-        prenotazione_acquisto.setTipo("noleggio");
-        prenotazione_acquisto.setStato("in attesa");
-        prenotazione_acquisto.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente()));
-        prenotazione_acquisto.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null));
-        prenotazioniRepository.save(prenotazione_acquisto); //salvo la prenotazione
-        return prenotazione;
+        PrenotazioneEntity prenotazione_noleggio=convertToEntity(prenotazione);
+        prenotazione_noleggio.setTipo("noleggio");
+        prenotazione_noleggio.setStato("in attesa");
+        prenotazione_noleggio.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente()));
+        prenotazione_noleggio.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null));
+        prenotazioniRepository.save(prenotazione_noleggio); //salvo la prenotazione
+        return convertToSwaggerSchema(prenotazione_noleggio);
     }
     
     public List<Prenotazione> prenotazioniAmministratoriAcquistoGet(){

@@ -25,7 +25,7 @@ public class SecurityConfig {
                         .requestMatchers("/veicoli/amministratori-acquisto/**").hasAuthority("SCOPE_amministratori-acquisto") //autorizzo gli amministratori-acquisto ad accedere alle risorse all'endpoint /veicoli/amministratori-acquisto
                         .requestMatchers("/veicoli/clienti/**").hasAnyAuthority("SCOPE_clienti") //autorizzo i clienti ad accedere alle risorse all'endpoint /veicoli/clienti
                         .requestMatchers("/prenotazioni/clienti/**").hasAuthority("SCOPE_clienti") //autorizzo gli amministratori ad accedere alle risorse all'endpoint /prenotazioni/amministratori
-                        .requestMatchers("/prenotazioni/amministratori-acquisto").hasAuthority("SCOPE_amministratori-acquisto") //autorizzo gli amministratori-acquisto ad accedere alle risorse all'endpoint /prenotazioni/amministratori/acquisto
+                        .requestMatchers("/prenotazioni/amministratori-acquisto/**").hasAuthority("SCOPE_amministratori-acquisto") //autorizzo gli amministratori-acquisto ad accedere alle risorse all'endpoint /prenotazioni/amministratori/acquisto
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt()

@@ -82,7 +82,7 @@ public class VeicoliService {
     public List<Automobile> veicoliAmministratoriNoleggioGet(){
         logger.info("VeicoliAmministratoriNoleggioGet-service"); //logger
         List<Automobile> automobili_noleggio= new ArrayList<>(); //creo una lista di automobili
-        for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGet()) { //per ogni automobile presente nel database presa tramite la query hql
+        for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGetAmministartori()) { //per ogni automobile presente nel database presa tramite la query hql
             automobili_noleggio.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
         }
       return automobili_noleggio; //ritorno la lista
@@ -93,7 +93,7 @@ public class VeicoliService {
     public List<Automobile> veicoliAmministratoriAcquistoGet(){
         logger.info("VeicoliAmministratoriAcquistoGet-service"); //logger
         List<Automobile> automobili_acquisto= new ArrayList<>(); //creo una lista di automobili
-        for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGet()) { //per ogni automobile presente nel database presa tramite la query hql
+        for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGetAmministratori()) { //per ogni automobile presente nel database presa tramite la query hql
             automobili_acquisto.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
         }
         return automobili_acquisto; //ritorno la lista

@@ -18,4 +18,14 @@ public interface AutomobileRepository extends JpaRepository<AutomobileEntity, In
     //query per ottenere automobili  se disponibili e destinate all'acquisto
     @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='acquisto' and a.disponibile = true")
     List<AutomobileEntity> veicoliAcquistoGet();
+
+    @Transactional
+    //query per ottenere automobili  se disponibili e destinate al noleggio
+    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='noleggio'")
+    List<AutomobileEntity> veicoliNoleggioGetAmministartori();
+
+    @Transactional
+    //query per ottenere automobili  se disponibili e destinate all'acquisto
+    @Query("SELECT a FROM AutomobileEntity a WHERE a.tipoDiDestinazione ='acquisto'")
+    List<AutomobileEntity> veicoliAcquistoGetAmministratori();
 }
