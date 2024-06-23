@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class AutomobileConverter {
 
     //converte un'automobileEntity in un'automobile
-    public static Automobile convertToSwaggerSchema(AutomobileEntity automobileEntity) {
+    public static Automobile convertToSwaggerSchemaAutomobile(AutomobileEntity automobileEntity) {
         Automobile automobile = new Automobile();
         automobile.setId(BigDecimal.valueOf(automobileEntity.getId()));
         automobile.setMarca(automobileEntity.getMarca());
@@ -27,7 +27,7 @@ public class AutomobileConverter {
     }
 
     //converte un'automobile in un'automobileEntity
-    public static AutomobileEntity convertToEntity(Automobile automobile) {
+    public static AutomobileEntity convertToEntityAutomobile(Automobile automobile) {
         AutomobileEntity automobileEntity = new AutomobileEntity();
         automobileEntity.setId(automobile.getId().intValue());
         automobileEntity.setMarca(automobile.getMarca());

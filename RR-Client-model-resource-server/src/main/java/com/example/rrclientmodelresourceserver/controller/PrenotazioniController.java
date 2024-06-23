@@ -45,4 +45,24 @@ public class PrenotazioniController implements PrenotazioniApi {
     public ResponseEntity<List<Prenotazione>> prenotazioniAmministratoriNoleggioGet() {
         return ResponseEntity.ok(prenotazioniService.prenotazioniAmministratoriNoleggioGet());
     }
+
+    @Override
+    public ResponseEntity<List<Prenotazione>> prenotazioniClientiAcquistoGet(String principal) {
+        return ResponseEntity.ok(prenotazioniService.prenotazioniClientiAcquistoGet(principal));
+    }
+
+    @Override
+    public ResponseEntity<List<Prenotazione>> prenotazioniClientiNoleggioGet(String principal) {
+        return ResponseEntity.ok(prenotazioniService.prenotazioniClientiNoleggioGet(principal));
+    }
+
+    @Override
+    public ResponseEntity<Prenotazione> prenotazioniAmministratoriAcquistoModificaIdPut(BigDecimal id) {
+        return PrenotazioniApi.super.prenotazioniAmministratoriAcquistoModificaIdPut(id);
+    }
+
+    @Override
+    public ResponseEntity<Prenotazione> prenotazioniAmministratoriNoleggioModificaIdPut(BigDecimal id) {
+        return PrenotazioniApi.super.prenotazioniAmministratoriNoleggioModificaIdPut(id);
+    }
 }

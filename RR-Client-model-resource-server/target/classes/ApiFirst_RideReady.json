@@ -149,11 +149,11 @@
         "description": "RF-GC-PA-2\nIl sistema dovrà permettere al cliente di visualizzare le prenotazioni per l’acquisto\n\n",
         "parameters": [
           {
-            "name": "id",
+            "name": "principal",
             "in": "header",
             "required": true,
             "schema": {
-              "type": "number"
+              "type": "string"
             }
           }
         ],
@@ -189,11 +189,11 @@
         "description": "RF-GC-PA-3\nIl sistema dovrà permettere al cliente di visualizzare i veicoli acquistati\n\n",
         "parameters": [
           {
-            "name": "id",
+            "name": "principal",
             "in": "header",
             "required": true,
             "schema": {
-              "type": "number"
+              "type": "string"
             }
           }
         ],
@@ -306,11 +306,11 @@
         "description": "RF-GC-GN-5\nIl sistema dovrà permettere al cliente di visualizzare i propri noleggi terminati\n\n",
         "parameters": [
           {
-            "name": "id",
+            "name": "principal",
             "in": "header",
             "required": true,
             "schema": {
-              "type": "number"
+              "type": "string"
             }
           }
         ],
@@ -580,9 +580,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": {
                     "$ref": "#/components/schemas/Prenotazione"
-                  }
                 }
               }
             }
@@ -763,9 +761,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": {
                     "$ref": "#/components/schemas/Prenotazione"
-                  }
                 }
               }
             }
@@ -779,7 +775,7 @@
         }
       }
     },
-    "/noleggio/amministratori-noleggio/conferma": {
+    "/ordine/amministratori-noleggio/conferma": {
       "post": {
         "summary": "Inserimento ordine noleggio",
         "tags": [

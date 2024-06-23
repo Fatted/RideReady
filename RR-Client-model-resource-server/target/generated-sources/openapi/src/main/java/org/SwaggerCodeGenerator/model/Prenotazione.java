@@ -1,29 +1,23 @@
 package org.SwaggerCodeGenerator.model;
 
-import java.net.URI;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.example.rrclientmodelresourceserver.validation.CodiceFiscale;
-import com.example.rrclientmodelresourceserver.validation.DataFormato;
+import com.example.rrclientmodelresourceserver.validation.customvalidator.CodiceFiscale;
+import com.example.rrclientmodelresourceserver.validation.customvalidator.DataFormato;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
+
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.constraints.*;
 
 
-import java.util.*;
 import javax.annotation.Generated;
 
 /**
@@ -65,8 +59,8 @@ public class Prenotazione {
   /**
    * ID dell'automobile
    * @return id
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "id", description = "ID dell'automobile", required = false)
   public BigDecimal getId() {
     return id;
@@ -84,8 +78,8 @@ public class Prenotazione {
   /**
    * ID dell'automobile
    * @return idAutomobile
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "id_automobile", description = "ID dell'automobile", required = false)
   public BigDecimal getIdAutomobile() {
     return idAutomobile;
@@ -103,8 +97,8 @@ public class Prenotazione {
   /**
    * ID dell'utente
    * @return idUtente
-  */
-  
+   */
+
   @Schema(name = "id_utente", description = "ID dell'utente", required = false)
   public String getIdUtente() {
     return idUtente;
@@ -122,8 +116,8 @@ public class Prenotazione {
   /**
    * il tipo della prenotazione noleggio/acquisto
    * @return tipo
-  */
-  
+   */
+
   @Schema(name = "tipo", description = "il tipo della prenotazione noleggio/acquisto", required = false)
   public String getTipo() {
     return tipo;
@@ -141,8 +135,8 @@ public class Prenotazione {
   /**
    * Data della richiesta di acquisto
    * @return dataPrenotazione
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "data_prenotazione", description = "Data della richiesta di acquisto", required = false)
   public LocalDate getDataPrenotazione() {
     return dataPrenotazione;
@@ -160,8 +154,8 @@ public class Prenotazione {
   /**
    * stato della prenotazione che può essere emessa/accetata/rifiutata
    * @return stato
-  */
-  
+   */
+
   @Schema(name = "stato", description = "stato della prenotazione che può essere emessa/accetata/rifiutata", required = false)
   public String getStato() {
     return stato;
@@ -181,11 +175,11 @@ public class Prenotazione {
     }
     Prenotazione prenotazione = (Prenotazione) o;
     return Objects.equals(this.id, prenotazione.id) &&
-        Objects.equals(this.idAutomobile, prenotazione.idAutomobile) &&
-        Objects.equals(this.idUtente, prenotazione.idUtente) &&
-        Objects.equals(this.tipo, prenotazione.tipo) &&
-        Objects.equals(this.dataPrenotazione, prenotazione.dataPrenotazione) &&
-        Objects.equals(this.stato, prenotazione.stato);
+            Objects.equals(this.idAutomobile, prenotazione.idAutomobile) &&
+            Objects.equals(this.idUtente, prenotazione.idUtente) &&
+            Objects.equals(this.tipo, prenotazione.tipo) &&
+            Objects.equals(this.dataPrenotazione, prenotazione.dataPrenotazione) &&
+            Objects.equals(this.stato, prenotazione.stato);
   }
 
   @Override

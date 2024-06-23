@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-19T12:30:19.977507800+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-21T18:10:10.437692200+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "prenotazioni", description = "the prenotazioni API")
 public interface PrenotazioniApi {
@@ -107,7 +107,7 @@ public interface PrenotazioniApi {
         value = "/prenotazioni/amministratori-acquisto/modifica/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<Prenotazione>> prenotazioniAmministratoriAcquistoModificaIdPut(
+    default ResponseEntity<Prenotazione> prenotazioniAmministratoriAcquistoModificaIdPut(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
     ) {
         getRequest().ifPresent(request -> {
@@ -192,7 +192,7 @@ public interface PrenotazioniApi {
         value = "/prenotazioni/amministratori-noleggio/modifica/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<Prenotazione>> prenotazioniAmministratoriNoleggioModificaIdPut(
+    default ResponseEntity<Prenotazione> prenotazioniAmministratoriNoleggioModificaIdPut(
         @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
     ) {
         getRequest().ifPresent(request -> {
@@ -213,7 +213,7 @@ public interface PrenotazioniApi {
      * GET /prenotazioni/clienti/acquisto : Visualizza prenotazioni acquisto effettuate dall&#39;utente
      * RF-GC-PA-2 Il sistema dovrà permettere al cliente di visualizzare le prenotazioni per l’acquisto  
      *
-     * @param id  (required)
+     * @param principal  (required)
      * @return Prenotazioni effettuate (status code 200)
      *         or Errore nella visualizzazione delle prenotazioni (status code 400)
      *         or Non autoriazzato a visualizzare le prenotazioni (status code 401)
@@ -236,7 +236,7 @@ public interface PrenotazioniApi {
         produces = { "application/json" }
     )
     default ResponseEntity<List<Prenotazione>> prenotazioniClientiAcquistoGet(
-        @Parameter(name = "id", description = "", required = true) @RequestHeader(value = "id", required = true) BigDecimal id
+        @Parameter(name = "principal", description = "", required = true) @RequestHeader(value = "principal", required = true) String principal
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

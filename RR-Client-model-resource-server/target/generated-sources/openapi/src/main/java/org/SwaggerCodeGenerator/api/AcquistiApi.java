@@ -5,7 +5,6 @@
  */
 package org.SwaggerCodeGenerator.api;
 
-import java.math.BigDecimal;
 import org.SwaggerCodeGenerator.model.Ordine;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -30,7 +29,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-19T12:30:19.977507800+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-21T18:10:10.437692200+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "acquisti", description = "the acquisti API")
 public interface AcquistiApi {
@@ -43,7 +42,7 @@ public interface AcquistiApi {
      * GET /acquisti/clienti : Visualizza acquisti effettuati dal cliente
      * RF-GC-PA-3 Il sistema dovrà permettere al cliente di visualizzare i veicoli acquistati  
      *
-     * @param id  (required)
+     * @param principal  (required)
      * @return Visualizzazione acquisti effettuati (status code 200)
      *         or Errore nella visualizzazione degli acquisti (status code 400)
      *         or Non autorizzato a visualizzare gli acquisti (status code 401)
@@ -66,7 +65,7 @@ public interface AcquistiApi {
         produces = { "application/json" }
     )
     default ResponseEntity<List<Ordine>> acquistiClientiGet(
-        @Parameter(name = "id", description = "", required = true) @RequestHeader(value = "id", required = true) BigDecimal id
+        @Parameter(name = "principal", description = "", required = true) @RequestHeader(value = "principal", required = true) String principal
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
