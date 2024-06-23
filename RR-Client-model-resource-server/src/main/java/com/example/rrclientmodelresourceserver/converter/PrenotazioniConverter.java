@@ -1,14 +1,9 @@
 package com.example.rrclientmodelresourceserver.converter;
 
 import com.example.rrclientmodelresourceserver.model.PrenotazioneEntity;
-import com.example.rrclientmodelresourceserver.repository.AutomobileRepository;
-import com.example.rrclientmodelresourceserver.repository.UtenteRepository;
 import org.SwaggerCodeGenerator.model.Prenotazione;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
-import java.time.ZoneOffset;
+
 
 public class PrenotazioniConverter {
 

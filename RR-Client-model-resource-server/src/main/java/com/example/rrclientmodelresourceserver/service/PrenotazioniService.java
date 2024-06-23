@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,6 +142,38 @@ public class PrenotazioniService {
             }
         }
         return prenotazioni_noleggio;
+    }
+
+    public Prenotazione prenotazioniAmministratoriAcquistoModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
+        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null);
+        if (prenotazioneEntity == null) {
+            throw new ResourceNotFoundException("Prenotazione non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
+        }
+        if (!prenotazioneEntity.getTipo().equals("acquisto")) {
+            throw new ResourceNotFoundException("Prenotazione non di tipo acquisto"); //lancio un'eccezione catturata dal global exception handler
+        }
+        if (!prenotazioneEntity.getStato().equals("in attesa")) {
+            throw new ResourceNotFoundException("Prenotazione non in attesa"); //lancio un'eccezione catturata dal global exception handler
+        }
+        prenotazioneEntity.setStato(prenotazione.getStato());
+        prenotazioniRepository.save(prenotazioneEntity); //salvo la prenotazione
+        return convertToSwaggerSchema(prenotazioneEntity);
+    }
+
+    public Prenotazione prenotazioniAmministratoriNoleggioModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
+        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null);
+        if (prenotazioneEntity == null) {
+            throw new ResourceNotFoundException("Prenotazione non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
+        }
+        if (!prenotazioneEntity.getTipo().equals("noleggio")) {
+            throw new ResourceNotFoundException("Prenotazione non di tipo noleggio"); //lancio un'eccezione catturata dal global exception handler
+        }
+        if (!prenotazioneEntity.getStato().equals("in attesa")) {
+            throw new ResourceNotFoundException("Prenotazione non in attesa"); //lancio un'eccezione catturata dal global exception handler
+        }
+        prenotazioneEntity.setStato(prenotazione.getStato());
+        prenotazioniRepository.save(prenotazioneEntity); //salvo la prenotazione
+        return convertToSwaggerSchema(prenotazioneEntity);
     }
 
 }
