@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-21T18:10:10.437692200+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-23T12:43:14.936233+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "prenotazioni", description = "the prenotazioni API")
 public interface PrenotazioniApi {
@@ -86,6 +86,7 @@ public interface PrenotazioniApi {
      * RF-GAA-GV-2 l sistema dovrà permettere all&#39;amministratore acquisto di accettare le prenotazioni di vendita dei clienti  
      *
      * @param id  (required)
+     * @param prenotazione  (required)
      * @return Prenotazione modificata con successo (status code 200)
      *         or Errore nella modifica della prenotazione (status code 400)
      *         or Non autorizzato a modificare la prenotazione (status code 401)
@@ -105,10 +106,12 @@ public interface PrenotazioniApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/prenotazioni/amministratori-acquisto/modifica/{id}",
-        produces = { "application/json" }
+        produces = { "application/json" },
+        consumes = { "application/json" }
     )
     default ResponseEntity<Prenotazione> prenotazioniAmministratoriAcquistoModificaIdPut(
-        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
+        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id,
+        @Parameter(name = "Prenotazione", description = "", required = true) @Valid @RequestBody Prenotazione prenotazione
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -171,6 +174,7 @@ public interface PrenotazioniApi {
      * RF-GAN-GN-2 l sistema dovrà permettere all&#39;amministratore noleggio di modificare le prenotazioni di noleggio  
      *
      * @param id  (required)
+     * @param prenotazione  (required)
      * @return Prenotazioni effettuate dagli utenti per un noleggio (status code 200)
      *         or Errore nella modifica della prenotazione (status code 400)
      *         or Non autorizzato a modificare la prenotazione (status code 401)
@@ -190,10 +194,12 @@ public interface PrenotazioniApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/prenotazioni/amministratori-noleggio/modifica/{id}",
-        produces = { "application/json" }
+        produces = { "application/json" },
+        consumes = { "application/json" }
     )
     default ResponseEntity<Prenotazione> prenotazioniAmministratoriNoleggioModificaIdPut(
-        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
+        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id,
+        @Parameter(name = "Prenotazione", description = "", required = true) @Valid @RequestBody Prenotazione prenotazione
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

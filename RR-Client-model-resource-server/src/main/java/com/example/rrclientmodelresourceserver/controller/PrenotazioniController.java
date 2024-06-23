@@ -56,13 +56,4 @@ public class PrenotazioniController implements PrenotazioniApi {
         return ResponseEntity.ok(prenotazioniService.prenotazioniClientiNoleggioGet(principal));
     }
 
-    @Override
-    public ResponseEntity<Prenotazione> prenotazioniAmministratoriAcquistoModificaIdPut(BigDecimal id) {
-        return PrenotazioniApi.super.prenotazioniAmministratoriAcquistoModificaIdPut(id);
-    }
-
-    @Override
-    public ResponseEntity<Prenotazione> prenotazioniAmministratoriNoleggioModificaIdPut(BigDecimal id) {
-        return PrenotazioniApi.super.prenotazioniAmministratoriNoleggioModificaIdPut(id);
-    }
 }

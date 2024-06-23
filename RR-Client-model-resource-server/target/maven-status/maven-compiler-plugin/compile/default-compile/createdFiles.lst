@@ -1,0 +1,6 @@
+com\example\rrclientmodelresourceserver\controller\PrenotazioniController.class
+com\example\rrclientmodelresourceserver\validation\CustomAccessDeniedHandler.class
+com\example\rrclientmodelresourceserver\validation\CustomAuthenticationEntryPoint.class
+org\SwaggerCodeGenerator\api\PrenotazioniApi.class
+com\example\rrclientmodelresourceserver\RrClientModelResourceServerApplication.class
+com\example\rrclientmodelresourceserver\config\SecurityConfig.class

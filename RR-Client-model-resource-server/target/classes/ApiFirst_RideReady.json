@@ -488,45 +488,6 @@
         }
       }
     },
-    "/veicoli/amministratori-acquisto/modifica/{id}": {
-      "put": {
-        "summary": "Modifica Veicoli Acquisto",
-        "tags": [
-          "Gestione Inventario [Amministratore-Acquisto]"
-        ],
-        "description": "RF-GAA-GI-5\nIl sistema dovrà permettere all'amministratore acquisto di aggiornare lo stato dei veicoli\n\n",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Veicolo aggiornato correttamente",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/Automobile"
-                  }
-                }
-              }
-            }
-          },
-            "400": {
-                "description": "Errore nella modifica del veicolo"
-            },
-            "401": {
-                "description": "Non autorizzato a modificare il veicolo"
-            }
-        }
-      }
-    },
     "/prenotazioni/amministratori-acquisto": {
       "get": {
         "summary": "Visualizza le prenotazioni effettuate dai clienti per un acquisto",
@@ -574,6 +535,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prenotazione"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Prenotazione modificata con successo",
@@ -661,53 +632,6 @@
         }
       }
     },
-    "/veicoli/amministratori-noleggio/modifica/{id}": {
-      "put": {
-        "summary": "Modifica Veicolo Noleggio",
-        "tags": [
-          "Gestione Inventario [Amministratore-Noleggio]"
-        ],
-        "description": "RF-GAN-GI-2\nIl sistema dovrà permettere all'amministratore noleggio di modificare un veicolo da noleggio\n\n",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Automobile"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Veicolo aggiornato con successo",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Automobile"
-                }
-              }
-            }
-          },
-            "400": {
-                "description": "Errore nella modifica del veicolo"
-            },
-            "401": {
-                "description": "Non autorizzato a modificare il veicolo"
-            }
-        }
-      }
-    },
     "/prenotazioni/amministratori-noleggio": {
       "get": {
         "summary": "Visualizza le prenotazioni effettuate dai clienti per un noleggio",
@@ -755,6 +679,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prenotazione"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Prenotazioni effettuate dagli utenti per un noleggio",

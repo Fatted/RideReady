@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-21T18:10:10.437692200+02:00[Europe/Rome]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-06-23T12:43:14.936233+02:00[Europe/Rome]")
 @Validated
 @Tag(name = "veicoli", description = "the veicoli API")
 public interface VeicoliApi {
@@ -66,49 +66,6 @@ public interface VeicoliApi {
     )
     default ResponseEntity<List<Automobile>> veicoliAmministratoriAcquistoGet(
         
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"cilindrata\" : 2.3021358869347655, \"modello\" : \"modello\", \"targa\" : \"targa\", \"marca\" : \"marca\", \"carburante\" : \"carburante\", \"posti_a_sedere\" : 7.061401241503109, \"prezzo_acquisto\" : 6.027456183070403, \"tipo_di_destinazione\" : \"tipo_di_destinazione\", \"id\" : 0.8008281904610115, \"quantita\" : 5.962133916683182, \"cavalli\" : 5.637376656633329, \"disponibile\" : true, \"prezzo_noleggio_giornaliero\" : 1.4658129805029452 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * PUT /veicoli/amministratori-acquisto/modifica/{id} : Modifica Veicoli Acquisto
-     * RF-GAA-GI-5 Il sistema dovrà permettere all&#39;amministratore acquisto di aggiornare lo stato dei veicoli  
-     *
-     * @param id  (required)
-     * @return Veicolo aggiornato correttamente (status code 200)
-     *         or Errore nella modifica del veicolo (status code 400)
-     *         or Non autorizzato a modificare il veicolo (status code 401)
-     */
-    @Operation(
-        operationId = "veicoliAmministratoriAcquistoModificaIdPut",
-        summary = "Modifica Veicoli Acquisto",
-        tags = { "Gestione Inventario [Amministratore-Acquisto]" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato correttamente", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Automobile.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Errore nella modifica del veicolo"),
-            @ApiResponse(responseCode = "401", description = "Non autorizzato a modificare il veicolo")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.PUT,
-        value = "/veicoli/amministratori-acquisto/modifica/{id}",
-        produces = { "application/json" }
-    )
-    default ResponseEntity<List<Automobile>> veicoliAmministratoriAcquistoModificaIdPut(
-        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -275,52 +232,6 @@ public interface VeicoliApi {
     )
     default ResponseEntity<List<Automobile>> veicoliAmministratoriNoleggioGet(
         
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"cilindrata\" : 2.3021358869347655, \"modello\" : \"modello\", \"targa\" : \"targa\", \"marca\" : \"marca\", \"carburante\" : \"carburante\", \"posti_a_sedere\" : 7.061401241503109, \"prezzo_acquisto\" : 6.027456183070403, \"tipo_di_destinazione\" : \"tipo_di_destinazione\", \"id\" : 0.8008281904610115, \"quantita\" : 5.962133916683182, \"cavalli\" : 5.637376656633329, \"disponibile\" : true, \"prezzo_noleggio_giornaliero\" : 1.4658129805029452 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * PUT /veicoli/amministratori-noleggio/modifica/{id} : Modifica Veicolo Noleggio
-     * RF-GAN-GI-2 Il sistema dovrà permettere all&#39;amministratore noleggio di modificare un veicolo da noleggio  
-     *
-     * @param id  (required)
-     * @param automobile  (required)
-     * @return Veicolo aggiornato con successo (status code 200)
-     *         or Errore nella modifica del veicolo (status code 400)
-     *         or Non autorizzato a modificare il veicolo (status code 401)
-     */
-    @Operation(
-        operationId = "veicoliAmministratoriNoleggioModificaIdPut",
-        summary = "Modifica Veicolo Noleggio",
-        tags = { "Gestione Inventario [Amministratore-Noleggio]" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Veicolo aggiornato con successo", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Automobile.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Errore nella modifica del veicolo"),
-            @ApiResponse(responseCode = "401", description = "Non autorizzato a modificare il veicolo")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.PUT,
-        value = "/veicoli/amministratori-noleggio/modifica/{id}",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<Automobile> veicoliAmministratoriNoleggioModificaIdPut(
-        @Parameter(name = "id", description = "", required = true) @PathVariable("id") BigDecimal id,
-        @Parameter(name = "Automobile", description = "", required = true) @Valid @RequestBody Automobile automobile
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
