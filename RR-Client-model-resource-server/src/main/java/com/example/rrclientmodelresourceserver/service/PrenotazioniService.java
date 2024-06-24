@@ -37,7 +37,7 @@ public class PrenotazioniService {
 
 
     public Prenotazione prenotazioniClieentiAcquistoInserimentoPost(Prenotazione prenotazione) {
-
+        logger.info("PrenotazioniClientiAcquistoInserimentoPost-service");
         AutomobileEntity automobileEntity=automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null); //cerco l'automobile con l'id passato
         if(automobileEntity!=null){ //se l'automobile non è presente nel database
             if(!automobileEntity.getDisponibile() || !automobileEntity.getTipoDiDestinazione().equals("acquisto")){
@@ -55,23 +55,23 @@ public class PrenotazioniService {
             utenteRepository.save(utente); //salvo l'utente
         }
 
-        PrenotazioneEntity prenotazione_noleggio_check=prenotazioniRepository.checkPrenotazioneEsistente(automobileEntity, prenotazione.getDataPrenotazione(), utenteEntity, "acquisto");
+        PrenotazioneEntity prenotazione_noleggio_check=prenotazioniRepository.checkPrenotazioneEsistente(automobileEntity, prenotazione.getDataPrenotazione(), utenteEntity, "acquisto"); //controllo se esiste già una prenotazione
         if(prenotazione_noleggio_check!=null){
             throw new ResourceNotFoundException("Prenotazione già presente"); //lancio un'eccezione catturata dal global exception handler
         }
 
-        PrenotazioneEntity prenotazione_acquisto=convertToEntity(prenotazione);
-        prenotazione_acquisto.setTipo("acquisto");
-        prenotazione_acquisto.setStato("in attesa");
-        prenotazione_acquisto.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente()));
-        prenotazione_acquisto.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null));
+        PrenotazioneEntity prenotazione_acquisto=convertToEntity(prenotazione); //converto la prenotazione in entity
+        prenotazione_acquisto.setTipo("acquisto"); //setto il tipo di prenotazione
+        prenotazione_acquisto.setStato("in attesa"); //setto lo stato della prenotazione
+        prenotazione_acquisto.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente())); //setto l'utente preso tramite il codice fiscale
+        prenotazione_acquisto.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null)); //setto l'automobile presa tramite l'id
         prenotazioniRepository.save(prenotazione_acquisto); //salvo la prenotazione
 
         return convertToSwaggerSchema(prenotazione_acquisto);
     }
 
     public Prenotazione prenotazioniClieentiNoleggioInserimentoPost(Prenotazione prenotazione) {
-
+        logger.info("PrenotazioniClientiNoleggioInserimentoPost-service");
         AutomobileEntity automobileEntity=automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null); //cerco l'automobile con l'id passato
         if(automobileEntity!=null){
             if(!automobileEntity.getDisponibile() || !automobileEntity.getTipoDiDestinazione().equals("noleggio")){
@@ -94,49 +94,55 @@ public class PrenotazioniService {
             throw new ResourceNotFoundException("Prenotazione già presente"); //lancio un'eccezione catturata dal global exception handler
         }
 
-
-        PrenotazioneEntity prenotazione_noleggio=convertToEntity(prenotazione);
-        prenotazione_noleggio.setTipo("noleggio");
-        prenotazione_noleggio.setStato("in attesa");
-        prenotazione_noleggio.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente()));
-        prenotazione_noleggio.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null));
+        PrenotazioneEntity prenotazione_noleggio=convertToEntity(prenotazione); //converto la prenotazione in entity
+        prenotazione_noleggio.setTipo("noleggio"); //setto il tipo di prenotazione
+        prenotazione_noleggio.setStato("in attesa"); //setto lo stato della prenotazione
+        prenotazione_noleggio.setIdUtente(utenteRepository.findByCodicefiscale(prenotazione.getIdUtente())); //setto l'utente preso tramite il codice fiscale
+        prenotazione_noleggio.setIdAutomobile(automobileRepository.findById(prenotazione.getIdAutomobile().intValue()).orElse(null)); //setto l'automobile presa tramite l'id
         prenotazioniRepository.save(prenotazione_noleggio); //salvo la prenotazione
+
         return convertToSwaggerSchema(prenotazione_noleggio);
     }
     
     public List<Prenotazione> prenotazioniAmministratoriAcquistoGet(){
-        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByTipoStatoInAttesa("acquisto");
-        List<Prenotazione> prenotazioni_acquisto = new ArrayList<>();
-        for(PrenotazioneEntity prenotazione:prenotazioni){
-            prenotazioni_acquisto.add(convertToSwaggerSchema(prenotazione));
+        logger.info("PrenotazioniAmministratoriAcquistoGet-service");
+        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByTipoStatoInAttesa("acquisto"); //cerco le prenotazioni di tipo acquisto in attesa
+        List<Prenotazione> prenotazioni_acquisto = new ArrayList<>(); //creo una lista di prenotazioni
+        for(PrenotazioneEntity prenotazione:prenotazioni){ //per ogni prenotazione
+            prenotazioni_acquisto.add(convertToSwaggerSchema(prenotazione)); //aggiungo la prenotazione alla lista
         }
+
         return prenotazioni_acquisto;
     }
 
     public List<Prenotazione> prenotazioniAmministratoriNoleggioGet(){
-        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByTipoStatoInAttesa("noleggio");
-        List<Prenotazione> prenotazioni_noleggio = new ArrayList<>();
-        for(PrenotazioneEntity prenotazione:prenotazioni){
-            prenotazioni_noleggio.add(convertToSwaggerSchema(prenotazione));
+        logger.info("PrenotazioniAmministratoriNoleggioGet-service");
+        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByTipoStatoInAttesa("noleggio"); //cerco le prenotazioni di tipo noleggio in attesa
+        List<Prenotazione> prenotazioni_noleggio = new ArrayList<>(); //creo una lista di prenotazioni
+        for(PrenotazioneEntity prenotazione:prenotazioni){ //per ogni prenotazione
+            prenotazioni_noleggio.add(convertToSwaggerSchema(prenotazione)); //aggiungo la prenotazione alla lista
         }
+
         return prenotazioni_noleggio;
     }
     
     public List<Prenotazione> prenotazioniClientiAcquistoGet(String principal){
-        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByIdUtente(utenteRepository.findByCodicefiscale(principal));
-        List<Prenotazione> prenotazioni_acquisto = new ArrayList<>();
-        for(PrenotazioneEntity prenotazione:prenotazioni){
+        logger.info("PrenotazioniClientiAcquistoGet-service");
+        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByIdUtente(utenteRepository.findByCodicefiscale(principal)); //cerco le prenotazioni per l'utente con il codice fiscale passato
+        List<Prenotazione> prenotazioni_acquisto = new ArrayList<>(); //creo una lista di prenotazioni
+        for(PrenotazioneEntity prenotazione:prenotazioni){ //per ogni prenotazione
             if(prenotazione.getTipo().equals("acquisto")){ //se la prenotazione è di tipo acquisto
-                prenotazioni_acquisto.add(convertToSwaggerSchema(prenotazione));
+                prenotazioni_acquisto.add(convertToSwaggerSchema(prenotazione)); //aggiungo la prenotazione alla lista
             }
         }
         return prenotazioni_acquisto;
     }
 
     public List<Prenotazione> prenotazioniClientiNoleggioGet(String principal){
-        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByIdUtente(utenteRepository.findByCodicefiscale(principal));
-        List<Prenotazione> prenotazioni_noleggio = new ArrayList<>();
-        for(PrenotazioneEntity prenotazione:prenotazioni){
+        logger.info("PrenotazioniClientiNoleggioGet-service");
+        List<PrenotazioneEntity> prenotazioni=prenotazioniRepository.findByIdUtente(utenteRepository.findByCodicefiscale(principal)); //cerco le prenotazioni per l'utente con il codice fiscale passato
+        List<Prenotazione> prenotazioni_noleggio = new ArrayList<>(); //creo una lista di prenotazioni
+        for(PrenotazioneEntity prenotazione:prenotazioni){ //per ogni prenotazione
             if(prenotazione.getTipo().equals("noleggio")){ //se la prenotazione è di tipo noleggio
                 prenotazioni_noleggio.add(convertToSwaggerSchema(prenotazione));
             }
@@ -145,34 +151,38 @@ public class PrenotazioniService {
     }
 
     public Prenotazione prenotazioniAmministratoriAcquistoModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
-        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null);
+        logger.info("PrenotazioniAmministratoriAcquistoModificaIdPut-service");
+        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null); //cerco la prenotazione con l'id passato
         if (prenotazioneEntity == null) {
             throw new ResourceNotFoundException("Prenotazione non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
         }
-        if (!prenotazioneEntity.getTipo().equals("acquisto")) {
+        if (!prenotazioneEntity.getTipo().equals("acquisto")) { //se la prenotazione non è di tipo acquisto
             throw new ResourceNotFoundException("Prenotazione non di tipo acquisto"); //lancio un'eccezione catturata dal global exception handler
         }
-        if (!prenotazioneEntity.getStato().equals("in attesa")) {
+        if (!prenotazioneEntity.getStato().equals("in attesa")) { //se la prenotazione non è in attesa
             throw new ResourceNotFoundException("Prenotazione non in attesa"); //lancio un'eccezione catturata dal global exception handler
         }
-        prenotazioneEntity.setStato(prenotazione.getStato());
+        prenotazioneEntity.setStato(prenotazione.getStato()); //setto lo stato della prenotazione
         prenotazioniRepository.save(prenotazioneEntity); //salvo la prenotazione
+
         return convertToSwaggerSchema(prenotazioneEntity);
     }
 
     public Prenotazione prenotazioniAmministratoriNoleggioModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
-        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null);
+        logger.info("PrenotazioniAmministratoriNoleggioModificaIdPut-service");
+        PrenotazioneEntity prenotazioneEntity = prenotazioniRepository.findById(id.longValue()).orElse(null); //cerco la prenotazione con l'id passato
         if (prenotazioneEntity == null) {
             throw new ResourceNotFoundException("Prenotazione non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
         }
-        if (!prenotazioneEntity.getTipo().equals("noleggio")) {
+        if (!prenotazioneEntity.getTipo().equals("noleggio")) { //se la prenotazione non è di tipo noleggio
             throw new ResourceNotFoundException("Prenotazione non di tipo noleggio"); //lancio un'eccezione catturata dal global exception handler
         }
-        if (!prenotazioneEntity.getStato().equals("in attesa")) {
+        if (!prenotazioneEntity.getStato().equals("in attesa")) { //se la prenotazione non è in attesa
             throw new ResourceNotFoundException("Prenotazione non in attesa"); //lancio un'eccezione catturata dal global exception handler
         }
-        prenotazioneEntity.setStato(prenotazione.getStato());
+        prenotazioneEntity.setStato(prenotazione.getStato()); //setto lo stato della prenotazione
         prenotazioniRepository.save(prenotazioneEntity); //salvo la prenotazione
+
         return convertToSwaggerSchema(prenotazioneEntity);
     }
 

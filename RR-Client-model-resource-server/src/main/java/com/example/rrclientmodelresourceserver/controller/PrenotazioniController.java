@@ -43,26 +43,31 @@ public class PrenotazioniController implements PrenotazioniApi {
 
     @Override //override del metodo prenotazioniAmministratoriNoleggioGet in PrenotazioniApi con endpoint /prenotazioni/amministratori-noleggio
     public ResponseEntity<List<Prenotazione>> prenotazioniAmministratoriNoleggioGet() {
+        logger.info("PrenotazioniAmministratoriNoleggioGet-controller");
         return ResponseEntity.ok(prenotazioniService.prenotazioniAmministratoriNoleggioGet());
     }
 
-    @Override
+    @Override //override del metodo prenotazioniClientiAcquistoGet in PrenotazioniApi con endpoint /prenotazioni/clienti/acquisto
     public ResponseEntity<List<Prenotazione>> prenotazioniClientiAcquistoGet(String principal) {
+        logger.info("PrenotazioniClientiAcquistoGet-controller");
         return ResponseEntity.ok(prenotazioniService.prenotazioniClientiAcquistoGet(principal));
     }
 
-    @Override
+    @Override //override del metodo prenotazioniClientiNoleggioGet in PrenotazioniApi con endpoint /prenotazioni/clienti/noleggio
     public ResponseEntity<List<Prenotazione>> prenotazioniClientiNoleggioGet(String principal) {
+        logger.info("PrenotazioniClientiNoleggioGet-controller");
         return ResponseEntity.ok(prenotazioniService.prenotazioniClientiNoleggioGet(principal));
     }
 
-    @Override
+    @Override //override del metodo prenotazioniAmministratoriAcquistoModificaIdPut in PrenotazioniApi con endpoint /prenotazioni/amministratori/acquisto/modifica/{id}
     public ResponseEntity<Prenotazione> prenotazioniAmministratoriAcquistoModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
+        logger.info("PrenotazioniAmministratoriAcquistoModificaIdPut-controller");
         return ResponseEntity.ok(prenotazioniService.prenotazioniAmministratoriAcquistoModificaIdPut(id, prenotazione));
     }
 
-    @Override
+    @Override //override del metodo prenotazioniAmministratoriNoleggioModificaIdPut in PrenotazioniApi con endpoint /prenotazioni/amministratori/noleggio/modifica/{id}
     public ResponseEntity<Prenotazione> prenotazioniAmministratoriNoleggioModificaIdPut(BigDecimal id, Prenotazione prenotazione) {
+        logger.info("PrenotazioniAmministratoriNoleggioModificaIdPut-controller");
         return ResponseEntity.ok(prenotazioniService.prenotazioniAmministratoriNoleggioModificaIdPut(id, prenotazione));
     }
 }
