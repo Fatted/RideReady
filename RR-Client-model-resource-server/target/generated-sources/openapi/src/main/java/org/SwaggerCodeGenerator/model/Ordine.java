@@ -1,17 +1,24 @@
 package org.SwaggerCodeGenerator.model;
 
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.util.Objects;
+import com.example.rrclientmodelresourceserver.validation.customvalidator.CodiceFiscale;
+import com.example.rrclientmodelresourceserver.validation.customvalidator.DataFormato;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.constraints.*;
 
 
 import java.util.*;
@@ -28,28 +35,34 @@ public class Ordine {
   private Integer id;
 
   @JsonProperty("id_prenotazione")
+  @NotNull
+  @Min(value = 1L, message = "id_prenotazione deve essere maggiore di 1")
   private Integer idPrenotazione;
 
   @JsonProperty("id_utente")
+  @CodiceFiscale
   private String idUtente;
 
   @JsonProperty("id_automobile")
+  @Min(value = 1L, message = "id_automobile deve essere maggiore di 1")
   private Integer idAutomobile;
 
   @JsonProperty("tipo")
+  @NotBlank(message = "Il campo tipo non può essere vuoto")
+  @Pattern(regexp = "^(noleggio|acquisto)$", message = "Il campo tipo può essere solo 'noleggio' o 'acquisto'")
   private String tipo;
 
   @JsonProperty("data_acquisto_automobile")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime dataAcquistoAutomobile;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  private LocalDate dataAcquistoAutomobile;
 
   @JsonProperty("data_noleggio_inizio")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime dataNoleggioInizio;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  private LocalDate dataNoleggioInizio;
 
   @JsonProperty("data_noleggio_fine")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime dataNoleggioFine;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  private LocalDate dataNoleggioFine;
 
   @JsonProperty("prezzo_acquisto_auto_ordine")
   private BigDecimal prezzoAcquistoAutoOrdine;
@@ -152,7 +165,7 @@ public class Ordine {
     this.tipo = tipo;
   }
 
-  public Ordine dataAcquistoAutomobile(OffsetDateTime dataAcquistoAutomobile) {
+  public Ordine dataAcquistoAutomobile(LocalDate dataAcquistoAutomobile) {
     this.dataAcquistoAutomobile = dataAcquistoAutomobile;
     return this;
   }
@@ -163,15 +176,15 @@ public class Ordine {
   */
   @Valid 
   @Schema(name = "data_acquisto_automobile", description = "data in cui l'auto è stata acquistata", required = false)
-  public OffsetDateTime getDataAcquistoAutomobile() {
+  public LocalDate getDataAcquistoAutomobile() {
     return dataAcquistoAutomobile;
   }
 
-  public void setDataAcquistoAutomobile(OffsetDateTime dataAcquistoAutomobile) {
+  public void setDataAcquistoAutomobile(LocalDate dataAcquistoAutomobile) {
     this.dataAcquistoAutomobile = dataAcquistoAutomobile;
   }
 
-  public Ordine dataNoleggioInizio(OffsetDateTime dataNoleggioInizio) {
+  public Ordine dataNoleggioInizio(LocalDate dataNoleggioInizio) {
     this.dataNoleggioInizio = dataNoleggioInizio;
     return this;
   }
@@ -182,15 +195,15 @@ public class Ordine {
   */
   @Valid 
   @Schema(name = "data_noleggio_inizio", description = "data in cui l'auto è stata noleggiata iniziale", required = false)
-  public OffsetDateTime getDataNoleggioInizio() {
+  public LocalDate getDataNoleggioInizio() {
     return dataNoleggioInizio;
   }
 
-  public void setDataNoleggioInizio(OffsetDateTime dataNoleggioInizio) {
+  public void setDataNoleggioInizio(LocalDate dataNoleggioInizio) {
     this.dataNoleggioInizio = dataNoleggioInizio;
   }
 
-  public Ordine dataNoleggioFine(OffsetDateTime dataNoleggioFine) {
+  public Ordine dataNoleggioFine(LocalDate dataNoleggioFine) {
     this.dataNoleggioFine = dataNoleggioFine;
     return this;
   }
@@ -201,11 +214,11 @@ public class Ordine {
   */
   @Valid 
   @Schema(name = "data_noleggio_fine", description = "data in cui l'auto è da consegnare al termine del noleggio", required = false)
-  public OffsetDateTime getDataNoleggioFine() {
+  public LocalDate getDataNoleggioFine() {
     return dataNoleggioFine;
   }
 
-  public void setDataNoleggioFine(OffsetDateTime dataNoleggioFine) {
+  public void setDataNoleggioFine(LocalDate dataNoleggioFine) {
     this.dataNoleggioFine = dataNoleggioFine;
   }
 

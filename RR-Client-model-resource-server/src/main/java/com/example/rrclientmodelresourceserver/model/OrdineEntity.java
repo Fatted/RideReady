@@ -5,12 +5,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "ordine")
 public class OrdineEntity {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -32,13 +34,13 @@ public class OrdineEntity {
     private String tipo;
 
     @Column(name = "data_acquisto_automobile")
-    private Instant dataAcquistoAutomobile;
+    private LocalDate dataAcquistoAutomobile;
 
     @Column(name = "data_noleggio_inizio")
-    private Instant dataNoleggioInizio;
+    private LocalDate dataNoleggioInizio;
 
     @Column(name = "data_noleggio_fine")
-    private Instant dataNoleggioFine;
+    private LocalDate dataNoleggioFine;
 
     @Column(name = "prezzo_acquisto_auto_ordine", nullable = false)
     private Double prezzoAcquistoAutoOrdine;
@@ -86,27 +88,27 @@ public class OrdineEntity {
         this.tipo = tipo;
     }
 
-    public Instant getDataAcquistoAutomobile() {
+    public LocalDate getDataAcquistoAutomobile() {
         return dataAcquistoAutomobile;
     }
 
-    public void setDataAcquistoAutomobile(Instant dataAcquistoAutomobile) {
+    public void setDataAcquistoAutomobile(LocalDate dataAcquistoAutomobile) {
         this.dataAcquistoAutomobile = dataAcquistoAutomobile;
     }
 
-    public Instant getDataNoleggioInizio() {
+    public LocalDate getDataNoleggioInizio() {
         return dataNoleggioInizio;
     }
 
-    public void setDataNoleggioInizio(Instant dataNoleggioInizio) {
+    public void setDataNoleggioInizio(LocalDate dataNoleggioInizio) {
         this.dataNoleggioInizio = dataNoleggioInizio;
     }
 
-    public Instant getDataNoleggioFine() {
+    public LocalDate getDataNoleggioFine() {
         return dataNoleggioFine;
     }
 
-    public void setDataNoleggioFine(Instant dataNoleggioFine) {
+    public void setDataNoleggioFine(LocalDate dataNoleggioFine) {
         this.dataNoleggioFine = dataNoleggioFine;
     }
 
