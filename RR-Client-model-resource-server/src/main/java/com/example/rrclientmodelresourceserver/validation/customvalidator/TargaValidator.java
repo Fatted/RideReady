@@ -1,4 +1,4 @@
-package com.example.rrclientmodelresourceserver.validation;
+package com.example.rrclientmodelresourceserver.validation.customvalidator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

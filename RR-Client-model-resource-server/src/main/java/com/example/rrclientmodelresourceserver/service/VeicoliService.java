@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
-import static com.example.rrclientmodelresourceserver.converter.AutomobileConverter.convertToEntity;
-import static com.example.rrclientmodelresourceserver.converter.AutomobileConverter.convertToSwaggerSchema;
+
+import static com.example.rrclientmodelresourceserver.converter.AutomobileConverter.*;
 
 @Service
 public class VeicoliService {
@@ -31,12 +31,12 @@ public class VeicoliService {
         if(automobileEntity == null){
             throw new ResourceNotFoundException("Automobile non trovata o non presente nel database"); //lancio un'eccezione catturata dal global exception handler
         }
-        return convertToSwaggerSchema(automobileEntity); //ritorno l'automobile convertita in swagger schema
+        return convertToSwaggerSchemaAutomobile(automobileEntity); //ritorno l'automobile convertita in swagger schema
     }
 
     public Automobile veicoliAmministratoriInserimentoPost(Automobile automobile){
         logger.info("VeicoliAmministratoriInserimentoPost-service"); //logger
-        automobileRepository.save(convertToEntity(automobile)); //salvo l'automobile convertita in entity
+        automobileRepository.save(convertToEntityAutomobile(automobile)); //salvo l'automobile convertita in entity
         return automobile; //ritorno l'automobile
     }
 
@@ -82,8 +82,8 @@ public class VeicoliService {
     public List<Automobile> veicoliAmministratoriNoleggioGet(){
         logger.info("VeicoliAmministratoriNoleggioGet-service"); //logger
         List<Automobile> automobili_noleggio= new ArrayList<>(); //creo una lista di automobili
-        for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGet()) { //per ogni automobile presente nel database presa tramite la query hql
-            automobili_noleggio.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
+        for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGetAmministartori()) { //per ogni automobile presente nel database presa tramite la query hql
+            automobili_noleggio.add(convertToSwaggerSchemaAutomobile(automobile)); //aggiungo l'automobile alla lista
         }
       return automobili_noleggio; //ritorno la lista
     }
@@ -93,8 +93,8 @@ public class VeicoliService {
     public List<Automobile> veicoliAmministratoriAcquistoGet(){
         logger.info("VeicoliAmministratoriAcquistoGet-service"); //logger
         List<Automobile> automobili_acquisto= new ArrayList<>(); //creo una lista di automobili
-        for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGet()) { //per ogni automobile presente nel database presa tramite la query hql
-            automobili_acquisto.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
+        for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGetAmministratori()) { //per ogni automobile presente nel database presa tramite la query hql
+            automobili_acquisto.add(convertToSwaggerSchemaAutomobile(automobile)); //aggiungo l'automobile alla lista
         }
         return automobili_acquisto; //ritorno la lista
     }
@@ -104,7 +104,7 @@ public class VeicoliService {
         logger.info("VeicoliClientiAcquistoGet-service"); //logger
         List<Automobile> automobili_acquisto= new ArrayList<>(); //creo una lista di automobili
         for (AutomobileEntity automobile : automobileRepository.veicoliAcquistoGet()) { //per ogni automobile presente nel database presa tramite la query hql
-            automobili_acquisto.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
+            automobili_acquisto.add(convertToSwaggerSchemaAutomobile(automobile)); //aggiungo l'automobile alla lista
         }
         return automobili_acquisto; //ritorno la lista
     }
@@ -114,7 +114,7 @@ public class VeicoliService {
         logger.info("VeicoliClientiNoleggioGet-service"); //logger
         List<Automobile> automobili_noleggio= new ArrayList<>(); //creo una lista di automobili
         for (AutomobileEntity automobile : automobileRepository.veicoliNoleggioGet()) { //per ogni automobile presente nel database presa tramite la query hql
-            automobili_noleggio.add(convertToSwaggerSchema(automobile)); //aggiungo l'automobile alla lista
+            automobili_noleggio.add(convertToSwaggerSchemaAutomobile(automobile)); //aggiungo l'automobile alla lista
         }
         return automobili_noleggio; //ritorno la lista
     }

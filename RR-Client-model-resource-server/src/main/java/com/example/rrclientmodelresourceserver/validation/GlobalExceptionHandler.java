@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import jakarta.validation.ConstraintViolationException;
+
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -64,6 +66,15 @@ public class GlobalExceptionHandler {
         error.put("error", "Bad Request"); //setto il tipo di errore
         error.put("message", ex.getMessage()); //setto il messaggio di errore
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST); //ritorno la mappa con lo status della response
+    }
+
+    @ExceptionHandler(DateTimeParseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected ResponseEntity<Map<String, String>> handleDateTimeParseException(DateTimeParseException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Bad Request");
+        error.put("message", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
