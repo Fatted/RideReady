@@ -48,8 +48,6 @@ public class Ordine {
   private Integer idAutomobile;
 
   @JsonProperty("tipo")
-  @NotBlank(message = "Il campo tipo non può essere vuoto")
-  @Pattern(regexp = "^(noleggio|acquisto)$", message = "Il campo tipo può essere solo 'noleggio' o 'acquisto'")
   private String tipo;
 
   @JsonProperty("data_acquisto_automobile")
