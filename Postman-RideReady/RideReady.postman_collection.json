@@ -1,0 +1,774 @@
+{
+	"info": {
+		"_postman_id": "729bd4d2-7cde-4d3b-8e0e-54d7461e7d91",
+		"name": "RideReady",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34286107"
+	},
+	"item": [
+		{
+			"name": "VeicoliApi",
+			"item": [
+				{
+					"name": "/veicoli/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJkYWUxYzYyYi1iNzRiLTQ0M2QtOTJiYi1jZTc1YjE4ODk5YjQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTQ4NTI0Mywic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTk0ODcwNDMsImlhdCI6MTcxOTQ4NTI0MywianRpIjoiYWQ4MWIyMzctYmQ1Zi00NmYwLWIzMGEtMWQzMWZmM2E5NzlmIn0.Xafy2VUh5VPihQ93yhU7qymrRIrGGTbHPW4s-WITBf9Ii6zbWDB7ncvos9n05_GOobupuzVyM0MqhI4dsCZcOJrWbS4pvQRGDVqu61Z-aAMCI0GemTGgxk05MxMiKzkJLU8kK5x8MfOrlT6v6kJ8vIvVLl5uKYoxd44IIHafqUzRPYerj-a9aObrkmLRrQak9JoZIsMsWxOvVezniCnY2hgyjLZpgEeFjcf39ej3Hmi78BIEbeNV7kJoblfiY4JjukqHqOpsJSx71pnENAJy1Pm8hdaCr0tKVKv4MZuaeB-WH05-ioIZ1yRg25224YVA7LZzIRLntNsi7OjFyxhv6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/402",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"402"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/amministratori/inserimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3NzAzNywic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE4OTc4ODM3LCJpYXQiOjE3MTg5NzcwMzcsImp0aSI6IjlkZTIyNDFiLTBjZGQtNDFhOS05ZDEwLTllNGNiYzA3YjI4NiJ9.ckUI3JwXThhLxckrRl2C9eLKiLidCYcM_4SYnVmZXXF2ftd2_Z1-IAjjd_uFIjonSanYy3w8jERLkby0SnjhPYJCw9PRBoAJLvCWj2NWZJ9eZbmswDXJXHtrk-X_gh-YKxorWLzPN3l_k3Bt4TZx633_CHfNzuXFcFclS3_wXOxAmTN638RpFAKVB9VOh6hM-acHnmfeXi1tDXs8AKwEI7htYw3Io0NbESpG-qow1wKiM9L7PBd0SjEzc4TaWQk_yfTCFECdXKSeI2wTA5LV1x0Yz6kUa4CuodPOmRm2AsFVSBLP_6ljRET9oYCImVOmF7I1GJs0OrQTm5C8T6KK6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"marca\": \"Fiat\",\r\n  \"modello\": \"Uno Turbo ie\",\r\n  \"prezzo_acquisto\": 30000,\r\n  \"prezzo_noleggio_giornaliero\": 0,\r\n  \"disponibile\": true,\r\n  \"quantita\": 1,\r\n  \"cavalli\": 700,\r\n  \"cilindrata\": 2400,\r\n  \"posti_a_sedere\": 2,\r\n  \"carburante\": \"Benziona/Etanolo\",\r\n  \"targa\": \"BD-700-DP\",\r\n  \"tipo_di_destinazione\": \"acquisto\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/veicoli/amministratori/inserimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"amministratori",
+								"inserimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/amministratori/modifica/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3NzAzNywic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE4OTc4ODM3LCJpYXQiOjE3MTg5NzcwMzcsImp0aSI6IjlkZTIyNDFiLTBjZGQtNDFhOS05ZDEwLTllNGNiYzA3YjI4NiJ9.ckUI3JwXThhLxckrRl2C9eLKiLidCYcM_4SYnVmZXXF2ftd2_Z1-IAjjd_uFIjonSanYy3w8jERLkby0SnjhPYJCw9PRBoAJLvCWj2NWZJ9eZbmswDXJXHtrk-X_gh-YKxorWLzPN3l_k3Bt4TZx633_CHfNzuXFcFclS3_wXOxAmTN638RpFAKVB9VOh6hM-acHnmfeXi1tDXs8AKwEI7htYw3Io0NbESpG-qow1wKiM9L7PBd0SjEzc4TaWQk_yfTCFECdXKSeI2wTA5LV1x0Yz6kUa4CuodPOmRm2AsFVSBLP_6ljRET9oYCImVOmF7I1GJs0OrQTm5C8T6KK6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"marca\": \"\",\r\n  \"modello\": \"\",\r\n  \"prezzo_acquisto\": 0,\r\n  \"prezzo_noleggio_giornaliero\": 0,\r\n  \"disponibile\": false,\r\n  \"quantita\": 0,\r\n  \"cavalli\": 0,\r\n  \"cilindrata\": 0,\r\n  \"posti_a_sedere\": 0,\r\n  \"carburante\": \"\",\r\n  \"targa\": \"\",\r\n  \"tipo_di_destinazione\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/veicoli/amministratori/modifica/402",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"amministratori",
+								"modifica",
+								"402"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/amministratori/elimina/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3NzAzNywic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE4OTc4ODM3LCJpYXQiOjE3MTg5NzcwMzcsImp0aSI6IjlkZTIyNDFiLTBjZGQtNDFhOS05ZDEwLTllNGNiYzA3YjI4NiJ9.ckUI3JwXThhLxckrRl2C9eLKiLidCYcM_4SYnVmZXXF2ftd2_Z1-IAjjd_uFIjonSanYy3w8jERLkby0SnjhPYJCw9PRBoAJLvCWj2NWZJ9eZbmswDXJXHtrk-X_gh-YKxorWLzPN3l_k3Bt4TZx633_CHfNzuXFcFclS3_wXOxAmTN638RpFAKVB9VOh6hM-acHnmfeXi1tDXs8AKwEI7htYw3Io0NbESpG-qow1wKiM9L7PBd0SjEzc4TaWQk_yfTCFECdXKSeI2wTA5LV1x0Yz6kUa4CuodPOmRm2AsFVSBLP_6ljRET9oYCImVOmF7I1GJs0OrQTm5C8T6KK6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/amministratori/elimina/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"amministratori",
+								"elimina",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/amministratori-noleggio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3ODIwOSwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktbm9sZWdnaW8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE4OTgwMDA5LCJpYXQiOjE3MTg5NzgyMDksImp0aSI6ImQwNDE0Y2Y2LTNiY2EtNGZiYi1iNjlkLTNiZjY5MDAyNDM1NyJ9.QycEAJLCXTO9aPR-vXkQ6sOu5vaelQQj8PBW4STbxf7zb5EdBskWcDkNYAJepqqMwGhGCCCvSpOh6Th6W8JCr87Eg2cA2H9qlQdRpQ2aoFlaCBQee5Oq2-dV3OfnuU-FzlbUk9dOv9lIlLVPk232921XVjLuiV1BwKgW7I4iUd57YutHg3fpiNs6064wcw5Z5PlwX9S3y7Zl9wp5BsRVoNvGU32boku4K_H-hNJAo9CgFRW3YIf0J8ThQ4WAYJHpWhSnTdon4jjVPloiG9CEAwVRUEBlvvfER6-1n6v3sdbgIrcP5kthctStdFG3WrfDgCim1Rsk8ESLYxDZUrRd8g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/amministratori-noleggio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"amministratori-noleggio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/amministratori-acquisto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJkYWUxYzYyYi1iNzRiLTQ0M2QtOTJiYi1jZTc1YjE4ODk5YjQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTQ4NTYwMiwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5NDg3NDAyLCJpYXQiOjE3MTk0ODU2MDIsImp0aSI6ImViNWVmNmE2LWFiM2QtNGYwNi05M2IzLTA4ODgwZGNlODQ0YSJ9.ZqKcjPz26S4xV7-naQMBUXeM1fHfqAIBKvLf1_XsUnIgh1j7C91YkoWhRLh6iHfZR7k54BrukRQSERM6W8eJXYwOFSejrAhhXDCIWvNZnr8p5xWfncHjYvT238Ip5Yg27s6x-vZ3PxMzUO8UkUgJ6zl8CtBIqUnhHI4brOG4BwHzgwV91TAAAzQYg0wkH1V2cwffFCh-SZThO13Cfe79zblEhOFPbRNjmO1lbs0_-eIHCGCUGVTawS0qAyTaNBbqu10v0pX6fMJjwpihc6bcBOcMXR9WrcsSoD-NYSCvNVLY02NXXwBrYZJkwWIF-n3nEHiXVE4Or34Ofxs7ONE9qw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/amministratori-acquisto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"amministratori-acquisto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/clienti/acquisto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3OTMzMSwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTg5ODExMzEsImlhdCI6MTcxODk3OTMzMSwianRpIjoiYzFmMjE5OTQtNTAwMi00NWM3LWI5ZDMtYWI5ODk4MzY4YzdlIn0.nqtxVhBiOwUpFp_Myl4r7fvmEEdEkWRUQmslXw7EzoP5OqrEY-b6Up0wvTBwT5s0ZmUdg8JZ0BishIXL-Tym7fKi2A0AzV0JN5H3GaKSwu-_eHIlMRxgfYZ4P_XGj0ClaRclft7Fb1jW_uM92sEx1WPhDHfVZlf6tL9WzhziRPt5iB2bl_KQQJ6jdlcfgyvJUyHaCNUnr3ThgLhDnGvTQJij_T4oVw1AuBKphgH6J0hKA_8BR5FlrJnd6R-nmorlQfK6yzJ18Vs6xqoW3Gs3itVOTWJmgvwQ5YiwB6pUoW0e1TKSBa9qajw_N9Yagn35cNGKwsUTYJP_IT4l1oSQXg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/clienti/acquisto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"clienti",
+								"acquisto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/veicoli/clienti/noleggio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3OTMzMSwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTg5ODExMzEsImlhdCI6MTcxODk3OTMzMSwianRpIjoiYzFmMjE5OTQtNTAwMi00NWM3LWI5ZDMtYWI5ODk4MzY4YzdlIn0.nqtxVhBiOwUpFp_Myl4r7fvmEEdEkWRUQmslXw7EzoP5OqrEY-b6Up0wvTBwT5s0ZmUdg8JZ0BishIXL-Tym7fKi2A0AzV0JN5H3GaKSwu-_eHIlMRxgfYZ4P_XGj0ClaRclft7Fb1jW_uM92sEx1WPhDHfVZlf6tL9WzhziRPt5iB2bl_KQQJ6jdlcfgyvJUyHaCNUnr3ThgLhDnGvTQJij_T4oVw1AuBKphgH6J0hKA_8BR5FlrJnd6R-nmorlQfK6yzJ18Vs6xqoW3Gs3itVOTWJmgvwQ5YiwB6pUoW0e1TKSBa9qajw_N9Yagn35cNGKwsUTYJP_IT4l1oSQXg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/veicoli/clienti/noleggio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"veicoli",
+								"clienti",
+								"noleggio"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PrenotazioniApi",
+			"item": [
+				{
+					"name": "/prenotazioni/clienti/acquisto/inserimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk3OTY4Niwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTg5ODE0ODYsImlhdCI6MTcxODk3OTY4NiwianRpIjoiZDJkODRjOTQtMTcxNy00YTAxLWIzZjAtOTJlZTAzNDI5ZDZjIn0.ccKR9BY0Bd04wjPB2q97hIewYRh2Lu-Ibic9QunWcvabSPURbb4hW30ymkJ0Rbo6n0Bgl8GTQKJ12FjkC8HiDIWHdeB1HEh_F7MlQS6JK_PDaAjSTZLjabfS8oFrlhSQFHPWw6wj6xTRjNowBu1AsLEJFUq-kBimJjdVfSzGxr5ldRclAH7yhMWi62VRkk0Wfc5372zzu5e8YatgNEDVuannKOp2L9lBcJd0q35AxSvNx_5eYghApdrJX_oMcUPpgOJPGrXSlV_UUyBAomH6ApUmdYxBwBVKROzwiVgLIZF0VuFfYi1vABdGuTlR3LBjt30vqG1bW7wqbonST85XVQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":0,\r\n  \"id_automobile\": 402,\r\n  \"id_utente\": \"DMTNTN00D04I676F\",\r\n  \"data_prenotazione\": \"29/06/2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/clienti/acquisto/inserimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"clienti",
+								"acquisto",
+								"inserimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/clienti/noleggio/inserimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTEzMjcyNywic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTkxMzQ1MjcsImlhdCI6MTcxOTEzMjcyNywianRpIjoiMmI2OTQ5ZTEtNDc2MC00YjI0LTllZTAtZjRmMjRiZTYxZDFlIn0.lQ0FDTujKFxwz1REO53KZ5NMFTEHh5Q2WPJU9PRCYS1zxlsKvaFLMQNI5o0gloe8k3aq5q6ZXsLdOpETaFHtiZb2e_FnjXoEaw7ZNwcZFtTlz93978aWk-Ge5JAs8Y2MTT6TTrXfGoptGpJw6JFw5E7w7RsLGfQSnfTBUCrDms4L-S0m-VIAomxaNg253v8GgYCY2WdZr5s5c_rCo6AzQTF-7hw3f1jSavNPh7Yxbf8nEXHQQA7w4d8rRO2aoi5NdCWEv7YE-7E6CIflyMTz_CCsTwKRtJP2I6-elK-hZmng3EEODKKbAo0dIpDSMxqcynFh6C1Lsn0JM-eEne8tZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":0,\r\n  \"id_automobile\": 13,\r\n  \"id_utente\": \"CRCNNA67T45B554I\",\r\n  \"data_prenotazione\": \"30/06/2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/clienti/noleggio/inserimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"clienti",
+								"noleggio",
+								"inserimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/amministratori-acquisto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxODk4NjYxNCwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE4OTg4NDE0LCJpYXQiOjE3MTg5ODY2MTQsImp0aSI6IjFkMmE0NGQ5LTNkZDQtNGNkNS1hMjkyLWU0Y2I1YjFmMzdiZSJ9.lvQ6oQYVrLPnyP8HyWPGbrFZgqJSHeMcpeeIIEH1ru0VkHXOK_VkkLFIVvdW-OQH7GVtux80tHEowLO0Da3aQFIEycZk6sPe-Mji8TTgeqmAXfCREPiHXUQuNuI6FmZfSkI40uY6vT30gBaehGadeZU_oE7AMhn7HC7lK1dVpvifNuYI07Avg9166FaGO7wCYGo7t0LeH0k1U-E6tMfkaKcWsfAGGFs3tDeby9eCyyTlg8wDJHO-VTMZldbGlBERBEhmZ9i-32sSP5MFMtA7ivNNzJI5ZnXQe-2zw260eGif5RAFZ1uixN3tNe5l2kOvpSvY1TO3cOrRn6Acr42Wqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/amministratori-acquisto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"amministratori-acquisto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/amministratori-noleggio",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI0OThlYTM2MS1mZDljLTQzNTMtYWEwMy1lNWNkOGQxZTk4MTMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTMxMDA5NCwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktbm9sZWdnaW8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5MzExODk0LCJpYXQiOjE3MTkzMTAwOTQsImp0aSI6IjVjOWEyYjhkLTgxZDYtNDQwOC04MGZmLTc1ZDVjNzYxY2YwMyJ9.XMl4WMMvpfBVptBZcVspbTaof6-lx8xyL9QvfKhW3EAPfGhOdt27eRQKTnbj0vn2KpJnHE0j32Io8VXIFgx4i5abJjO-c4kSf7Ckzfu2SF7VnkjAT9jGdkkcIlZZTqiAy_k1RiC84wuY1ubjBanFyF2tKYpG9iWEkaXie3DJyP6Fbe5BqNwSMyeiCI8sN_baiQM9JC3surwDXJaB0646ARcXWTq_1LDU7eFg8VLEuIQ2Wh0DBTqkkQkP8rhOSDQLd1nreCiTDjywdBEbIW5DjabqQ-_e8K4z0teSWCekSj584Pe5pbQk75ct3vmIRNPBgRxZTuW2ILcrJx2d4Ar1Aw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/amministratori-noleggio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"amministratori-noleggio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/clienti/acquisto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJiOTg3YjFiYS05N2RjLTRjMzAtOTI0NC1mZjVjNzlkMjExZjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTEzNjczOCwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTkxMzg1MzgsImlhdCI6MTcxOTEzNjczOCwianRpIjoiYzRhY2YxODctZTcxYi00N2EzLWI5NTItNzdlZGRlYzYwMDc0In0.PF4NNQI7I33o95PbYj-m_98XLKKoyQMDVmcRysKs1BaAjTN6h9Ec0XE8tajctx9kZtSy-9EWPB3O4hjv2fvOyRcmsOyWlPOrqdvmc2rQSOHapHuudPHlex1sgDtBOLeiFnSufxa97n9R2sJJpzAagVsieFkbNXdvOAldtBC_sFmJ1d8JkG8GH3Iv_uUVHd-EMFXLGuNfsvovIlORx_dUeFsiOAlBB-eicqpRLA7LzLfA6wuVJ40-sVjZOoGhpS-l3j5THsi6dGh_fByT92_PG2h4EXMKZiA2Jm2pWMsYKmL5CP422raeECWJAXLsYTOIwcBVrh1hj2nvicBqE6YT4w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "principal",
+								"value": "DMTNTN00D04I676F",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/clienti/acquisto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"clienti",
+								"acquisto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/clienti/noleggio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJkYWUxYzYyYi1iNzRiLTQ0M2QtOTJiYi1jZTc1YjE4ODk5YjQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTQ4NTI0Mywic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTk0ODcwNDMsImlhdCI6MTcxOTQ4NTI0MywianRpIjoiYWQ4MWIyMzctYmQ1Zi00NmYwLWIzMGEtMWQzMWZmM2E5NzlmIn0.Xafy2VUh5VPihQ93yhU7qymrRIrGGTbHPW4s-WITBf9Ii6zbWDB7ncvos9n05_GOobupuzVyM0MqhI4dsCZcOJrWbS4pvQRGDVqu61Z-aAMCI0GemTGgxk05MxMiKzkJLU8kK5x8MfOrlT6v6kJ8vIvVLl5uKYoxd44IIHafqUzRPYerj-a9aObrkmLRrQak9JoZIsMsWxOvVezniCnY2hgyjLZpgEeFjcf39ej3Hmi78BIEbeNV7kJoblfiY4JjukqHqOpsJSx71pnENAJy1Pm8hdaCr0tKVKv4MZuaeB-WH05-ioIZ1yRg25224YVA7LZzIRLntNsi7OjFyxhv6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "principal",
+								"value": "DMTNTN00D04I676F",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/clienti/noleggio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"clienti",
+								"noleggio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/amministratori-acquisto/modifica/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiIxZDE3NTI0MC0yMDMyLTQ5ZjQtYWNiZS03ZGZiMjk4YjQ5MjAiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTE0NzcyNCwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5MTQ5NTI0LCJpYXQiOjE3MTkxNDc3MjQsImp0aSI6IjVhNDM5NDU4LTA2MTAtNGMxMS05YjZiLTkxM2UwYjZjNzM3YiJ9.L-UZ6ZlxmExcun1NGlqT3MmSn7r0BpY4JXJ6DXJiVheTi70F7_9DtXxM2KJcpXYDWrImjAE-oTRCH4v31CLqT6BP54JKHh2DeC96UTeEssAFvmzNHhz8l-cMa3tI6rGEDg3yBG4dYN5kW7rYlPDA3gGGHj8f979U879QaMOJIHRz4BDns0zWSVz1tEqBx4exMMEyoKGrgScTOx0PVakSr4zaGPI_dMmEOrYABgJNS-SLod-9TOPkIZbycSR2UkjMwhJuIMmkTBFXuYVN98a2dsHfXv3U9KXiPHlwVQNAlgY3WNLbIAMFchPoKe18wJg4hI2-iq6yCZK-5uQdnvvYoA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"id_automobile\": 0,\r\n  \"id_utente\": \"\",\r\n  \"tipo\": \"\",\r\n  \"data_prenotazione\": \"\",\r\n  \"stato\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/amministratori-acquisto/modifica/252",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"amministratori-acquisto",
+								"modifica",
+								"252"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/prenotazioni/amministratori-noleggio/modifica/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI0OThlYTM2MS1mZDljLTQzNTMtYWEwMy1lNWNkOGQxZTk4MTMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTMxMDUzMiwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktbm9sZWdnaW8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5MzEyMzMyLCJpYXQiOjE3MTkzMTA1MzIsImp0aSI6ImQzYzYwNTkwLTcxMjAtNDA1NC1hYTdkLWMzMWE3NzIxZjM5ZCJ9.asjTle7OHu7qOOd6YX_ZxQJoeHIgnC_hBnN3eB4nvuB6ctbFO-bTTBJPJuz5gc5IX5vNFUoqh0ksVy_OKcw9el1bwwr49vszMnRchB8VntvhVafH0o7HkO2BlInJQITJTBtQjiVBkP6HYvXc1nIPjfSrVls7cplB2_wLnBSlOvlCedlXfKYGWHnBZXN4DiupFbYTddjD4Bdupk35ceHqnFnPi8Z6eK_oW5o2887iPikimeX4Yh7AOA4fu8eDIfFlHxpdw-rvqywLCNIR_OT3KXYogil2nq2jxSCExCIa5FOGyrCltigHHk-PVLYV3fhsZgsiDPY1UwqQfofLiiyzpg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 352,\r\n        \"id_automobile\": 13,\r\n        \"id_utente\": \"CRCNNA67T45B554I\",\r\n        \"tipo\": \"noleggio\",\r\n        \"data_prenotazione\": \"30/06/2024\",\r\n        \"stato\": \"accettata\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/prenotazioni/amministratori-noleggio/modifica/352",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"prenotazioni",
+								"amministratori-noleggio",
+								"modifica",
+								"352"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrdineApi",
+			"item": [
+				{
+					"name": "/ordine/amministratori-acquisto/conferma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI0OThlYTM2MS1mZDljLTQzNTMtYWEwMy1lNWNkOGQxZTk4MTMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTMwNzM3Niwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktYWNxdWlzdG8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5MzA5MTc2LCJpYXQiOjE3MTkzMDczNzYsImp0aSI6ImMzZTI2MmUwLWRlZDMtNGZkYy04NTg1LTJhZDFhNTdiZjQwMyJ9.vhoIVcW2_7414iWc-f1waPxIfB00qz8Kixp85D_oQoY9gRnbJFsQqFIOx-GBAlSjM_6qedlCcubzzJU4LLqOfAFNHMp6kRZvFQSL9owtX3e0LWSm-ozd-7f0cuLiqR8Gt0qaRuBdCw-zhOzyVNtPH3kZZUHj4HEQsNWberTnHUMISrq2hrKdFlkLoqoXnZiawJhXQzBCp-Hh8V2IP1EU2HUQVW2CpBjQunhHQwi-jk-W4pcXj-pyc1K-Nw_8jnPojtW2EfHWHYoS7pSEtuKHv9enkHuEo17toKnO-2aNGMWQuWBPdm7SqrTj3kzd8hS_MWLHiVYRh3mMhNdts4lIFA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"id_prenotazione\": 233,\r\n  \"id_utente\": \"DMTNTN00D04I676F\",\r\n  \"id_automobile\": 402,\r\n  \"data_acquisto_automobile\": \"02/07/2024\",\r\n  \"prezzo_acquisto_auto_ordine\": 29000,\r\n  \"prezzo_noleggio_giornaliero_ordine\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/ordine/amministratori-acquisto/conferma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"ordine",
+								"amministratori-acquisto",
+								"conferma"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/ordine/amministratori-noleggio/conferma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI0OThlYTM2MS1mZDljLTQzNTMtYWEwMy1lNWNkOGQxZTk4MTMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTMxMDQzNCwic2NvcGUiOlsiYW1taW5pc3RyYXRvcmktbm9sZWdnaW8iXSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwIiwiZXhwIjoxNzE5MzEyMjM0LCJpYXQiOjE3MTkzMTA0MzQsImp0aSI6ImViMWM3YTg0LWJhMzctNDQ1Mi1hMTEyLWY5MzY2YzY2MDllYyJ9.pqw813-bNK-bqk_lu5QU1G4e9vbc540k3mZxahrGgP_1LvTFf1CToPksOZN07lBzLHzGcgOvyw5kTwxapjCzcY1Bw4-3udERMvxZVbnuTShcivQV7128y_js3hl43EEOzq_6Wg0qq6S6wazDblfjgbOnk-PskPdvQUNL3E2PeiMjLAYfizSvA9n6KYc-CgT-kCBsYP98uVttar3AGpwzKwV_KKQxirLG-AXl2jv48TB62eSSUYTiNG7JiBeA60FniaY08w6QQ5hOK5SP961pJHnDOHFMGONuGuKZ_bnjvJ8HLn-ktQH-k8FtAaXpviCtVSCj05psK7-wgNJlp8hEmg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"id_prenotazione\": 352,\r\n  \"id_utente\": \"CRCNNA67T45B554I\",\r\n  \"id_automobile\": 13,\r\n  \"tipo\": \"\",\r\n  \"data_acquisto_automobile\": \"\",\r\n  \"data_noleggio_inizio\": \"02/07/2024\",\r\n  \"data_noleggio_fine\": \"07/07/2024\",\r\n  \"prezzo_acquisto_auto_ordine\": 0,\r\n  \"prezzo_noleggio_giornaliero_ordine\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/ordine/amministratori-noleggio/conferma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"ordine",
+								"amministratori-noleggio",
+								"conferma"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AcquistiApi",
+			"item": [
+				{
+					"name": "/acquisti/clienti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI5MTI0NWRjMy0xNTk4LTQ2ZmQtOWM5ZC01NThhZTgyNjI0ODEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTM5NzM5Miwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTkzOTkxOTIsImlhdCI6MTcxOTM5NzM5MiwianRpIjoiYWJlMjAwNjYtNzNjMi00NzA2LWIyNjktOTQ5OWQ0Y2Q4YjU5In0.D0yQcjoFqjO8U3bRJMKUOUCR8eN-malsK2m8gaHU9u3SXqM0nIvg6cOpG8HiYC4CigxRTXScil4FBuuclYzxSDI_WMzFSmU4LIpjP7rKmhP1uRzqjSUsQp9btuHvXUVO7SwtSPbBtpfjv_-Pms55IoOVOgcE_yMiEIEQVn8iZih2M98HMMLGA3pZlT6Opt2vMDTQq7LrtmewlkVPBBT1hwXk9k2T3ekmBx9-8FAWnyQsb_9sHL4y7gmFV16X3GQDxvLxNjeE4TVKUcvDb8hcBxmtnWArk62QBJ3DAxuAZgZPscrqDK0INsBGfdOk5cl2tbUvV2HnFLoRDn8qOp_83Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "principal",
+								"value": "DMTNTN00D04I676F",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8090/acquisti/clienti",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"acquisti",
+								"clienti"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NoleggioApi",
+			"item": [
+				{
+					"name": "/noleggio/clienti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI5MTI0NWRjMy0xNTk4LTQ2ZmQtOWM5ZC01NThhZTgyNjI0ODEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJSUi1yZWxpdmUtY2xpZW50IiwiYXVkIjoiUlItcmVsaXZlLWNsaWVudCIsIm5iZiI6MTcxOTM5OTYwMSwic2NvcGUiOlsiY2xpZW50aSJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwODAiLCJleHAiOjE3MTk0MDE0MDEsImlhdCI6MTcxOTM5OTYwMSwianRpIjoiY2ExZTJlNGUtOWE1OS00MDM2LTlkOWQtODk1NTdjMGU3ODRmIn0.oXMRTmErIGcQuVoeUzNvEv-mLJG5WAD9JuyBdf3OrK58oITE7stX-e5OXW7vWPBSScH_AekUy4tqbbypsLIFsSUhJ1HGAzKJ4qTQ5jxLFA5PMi4CXRvdBrgOb1P-Bb_O6jLgwFI1c6r0mi6IZMZaz9ASBlK6Sz9EOR9N3IkDqqTq6DYwkDt86k2nASxmvkDyncceyil_d9Ps2o2Erv4TAFtfzxgeb0OXlQkkuIS8nNVbhAMoO3Z3ZBmFfdp-sX05v1sHCJwMb0BnpoVYehH3ur1UsyKm7KmDU5WpCcJJX7UEkQNGxpH13pBMS7Q24ghAqcCGGeffdcMA3o-doJvRog",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "principal",
+								"value": "CRCNNA67T45B554I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8090/noleggio/clienti",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"noleggio",
+								"clienti"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

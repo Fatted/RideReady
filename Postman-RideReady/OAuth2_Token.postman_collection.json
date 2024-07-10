@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "05c32c37-63e7-4e85-b4c9-c48a656ebdc8",
+		"name": "OAuth2_Token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34286107"
+	},
+	"item": [
+		{
+			"name": "token/amministratori-acquisto",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenName",
+							"value": "Token/Amministratori-acquisto",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "amministratori-acquisto",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://127.0.0.1:8080/oauth2/token",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "Client Credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token/amministratori-noleggio",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "amministratori-noleggio",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token/Amministratori-noleggio",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://127.0.0.1:8080/oauth2/token",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "Client Credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token/clienti",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenName",
+							"value": "Token/clienti",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "clienti",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "RR-relive-client",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://127.0.0.1:8080/oauth2/token",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "Client Credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
