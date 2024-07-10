@@ -1,0 +1,5 @@
+com\example\rrclientmodeloauth2server\config\OAuth2ServerConfig$KeyGeneratorUtils.class
+com\example\rrclientmodeloauth2server\config\OAuth2ServerConfig.class
+com\example\rrclientmodeloauth2server\config\SecurityConfig.class
+com\example\rrclientmodeloauth2server\config\OAuth2ServerConfig$Jwks.class
+com\example\rrclientmodeloauth2server\RrClientModelOauth2ServerApplication.class
